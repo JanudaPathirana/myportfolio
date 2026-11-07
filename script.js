@@ -528,3 +528,175 @@ function showToast(message, type = 'success') {
     }, 300);
   }, 3500);
 }
+
+
+/* ==========================================
+   INTERACTIVE 3D CARD TILT & MOUSE TRACKING
+   ========================================== */
+function init3DTilt() {
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (isTouchDevice || prefersReducedMotion) return;
+
+  const tiltCards = document.querySelectorAll('.tilt-card');
+
+  tiltCards.forEach(card => {
+    let glare = card.querySelector('.tilt-glare');
+    if (!glare) {
+      glare = document.createElement('div');
+      glare.className = 'tilt-glare';
+      card.appendChild(glare);
+    }
+
+    let bounds = null;
+    let rAF = null;
+
+    function onMouseEnter() {
+      bounds = card.getBoundingClientRect();
+      card.style.transition = 'transform 0.12s ease-out, box-shadow 0.12s ease-out';
+    }
+
+    function onMouseMove(e) {
+      if (!bounds) bounds = card.getBoundingClientRect();
+
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      const xNorm = mouseX / bounds.width;
+      const yNorm = mouseY / bounds.height;
+
+      const maxTilt = 10;
+      const tiltX = (yNorm - 0.5) * -maxTilt;
+      const tiltY = (xNorm - 0.5) * maxTilt;
+
+      if (rAF) cancelAnimationFrame(rAF);
+
+      rAF = requestAnimationFrame(() => {
+        card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.02)`;
+
+        if (glare) {
+          glare.style.background = `radial-gradient(circle at ${xNorm * 100}% ${yNorm * 100}%, rgba(16, 185, 129, 0.2) 0%, transparent 65%)`;
+          glare.style.opacity = '1';
+        }
+      });
+    }
+
+    function onMouseLeave() {
+      bounds = null;
+      if (rAF) cancelAnimationFrame(rAF);
+
+      card.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+
+      if (glare) {
+        glare.style.opacity = '0';
+      }
+    }
+
+    card.addEventListener('mouseenter', onMouseEnter);
+    card.addEventListener('mousemove', onMouseMove);
+    card.addEventListener('mouseleave', onMouseLeave);
+  });
+}
+
+/* ==========================================
+   THREE.JS 3D HERO CONSTELLATION CANVAS
+   ========================================== */
+function initThreeHeroCanvas() {
+  if (typeof THREE === 'undefined') return;
+
+  const canvas = document.getElementById('three-hero-canvas');
+  if (!canvas) return;
+
+  try {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    camera.position.z = 30;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Particle Constellation
+    const particleCount = window.innerWidth < 768 ? 40 : 80;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 50;
+      positions[i + 1] = (Math.random() - 0.5) * 35;
+      positions[i + 2] = (Math.random() - 0.5) * 30;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+      color: 0x10b981,
+      size: 1.2,
+      transparent: true,
+      opacity: 0.65
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // Floating 3D Geometric Ring
+    const torusGeo = new THREE.TorusGeometry(12, 0.08, 16, 100);
+    const torusMat = new THREE.MeshBasicMaterial({
+      color: 0x10b981,
+      transparent: true,
+      opacity: 0.25,
+      wireframe: true
+    });
+    const torus = new THREE.Mesh(torusGeo, torusMat);
+    torus.position.set(12, 0, -5);
+    scene.add(torus);
+
+    // Mouse Tracking Parallax
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth) - 0.5;
+      mouseY = (e.clientY / window.innerHeight) - 0.5;
+    }, { passive: true });
+
+    // Handle Window Resize
+    function onResize() {
+      if (!canvas) return;
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+    }
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // Animation Loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      targetX += (mouseX - targetX) * 0.04;
+      targetY += (mouseY - targetY) * 0.04;
+
+      particles.rotation.y += 0.001;
+      particles.rotation.x += 0.0005;
+      particles.position.x = targetX * 6;
+      particles.position.y = -targetY * 6;
+
+      torus.rotation.x += 0.002;
+      torus.rotation.y += 0.003;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  } catch (err) {
+    console.warn('Three.js canvas initialized in fallback mode:', err);
+  }
+}
