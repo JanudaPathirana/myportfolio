@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initGitHubProjects();
   initContactForm();
   initCurrentYear();
+
+  // 3D & Visual Interactive Enhancements
+  init3DTilt();
+  initThreeHeroCanvas();
 });
 
 /* ==========================================

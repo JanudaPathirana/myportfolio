@@ -57,6 +57,9 @@
     }
   </script>
 
+  <!-- Three.js CDN for Interactive 3D Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <!-- Google Fonts & FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -141,6 +144,10 @@
 
   <!-- Hero Section -->
   <section id="home" class="relative min-h-[90vh] flex items-center pt-28 sm:pt-32 pb-16 overflow-hidden">
+    <!-- Three.js Interactive Particle Background Canvas -->
+    <canvas id="three-hero-canvas"
+      class="absolute inset-0 w-full h-full pointer-events-none z-0"
+      aria-hidden="true"></canvas>
     <!-- Subtle Background Grid -->
     <div class="bg-grid-mesh"></div>
 
@@ -204,7 +211,7 @@
 
       <!-- Right Column: Profile Image Showcase (5 Cols) (Fix 0.1 & 0.2) -->
       <div class="md:col-span-5 flex justify-center items-center order-1 md:order-2">
-        <div class="hero-profile-container">
+        <div class="hero-profile-container tilt-card">
           
           <!-- Orbit Decorative Rings & Glow -->
           <div class="avatar-orbit-outer"></div>
@@ -299,7 +306,7 @@
 
         <!-- 4 Authentic Metric Highlight Cards -->
         <div class="lg:col-span-5 grid grid-cols-2 gap-5 sm:gap-6">
-          <div class="card-surface p-6 text-center">
+          <div class="card-surface tilt-card p-6 text-center">
             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mx-auto mb-3">
               <i class="fas fa-graduation-cap"></i>
             </div>
@@ -307,7 +314,7 @@
             <span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Computer Science</span>
           </div>
 
-          <div class="card-surface p-6 text-center">
+          <div class="card-surface tilt-card p-6 text-center">
             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mx-auto mb-3">
               <i class="fas fa-university"></i>
             </div>
@@ -315,7 +322,7 @@
             <span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Green University</span>
           </div>
 
-          <div class="card-surface p-6 text-center">
+          <div class="card-surface tilt-card p-6 text-center">
             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mx-auto mb-3">
               <i class="fas fa-code"></i>
             </div>
@@ -323,7 +330,7 @@
             <span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Xtreme 20.0</span>
           </div>
 
-          <div class="card-surface p-6 text-center">
+          <div class="card-surface tilt-card p-6 text-center">
             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mx-auto mb-3">
               <i class="fas fa-laptop-code"></i>
             </div>
@@ -354,7 +361,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
 
         <!-- Category 1: Programming Languages -->
-        <div class="card-surface p-7 space-y-6">
+        <div class="card-surface tilt-card p-7 space-y-6">
           <div class="flex items-center space-x-3.5">
             <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">
               <i class="fas fa-code"></i>
@@ -387,7 +394,7 @@
         </div>
 
         <!-- Category 2: Frontend Development -->
-        <div class="card-surface p-7 space-y-6">
+        <div class="card-surface tilt-card p-7 space-y-6">
           <div class="flex items-center space-x-3.5">
             <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">
               <i class="fas fa-laptop-code"></i>
@@ -420,7 +427,7 @@
         </div>
 
         <!-- Category 3: Database -->
-        <div class="card-surface p-7 space-y-6">
+        <div class="card-surface tilt-card p-7 space-y-6">
           <div class="flex items-center space-x-3.5">
             <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">
               <i class="fas fa-database"></i>
@@ -453,7 +460,7 @@
         </div>
 
         <!-- Category 4: Developer Tools -->
-        <div class="card-surface p-7 space-y-6">
+        <div class="card-surface tilt-card p-7 space-y-6">
           <div class="flex items-center space-x-3.5">
             <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">
               <i class="fas fa-tools"></i>
@@ -528,7 +535,7 @@
 
         <!-- Project 01: Personal Portfolio Website (januda.dev) -->
         <div
-          class="project-card card-surface overflow-hidden flex flex-col h-full"
+          class="project-card card-surface tilt-card overflow-hidden flex flex-col h-full"
           data-category="web">
           <div class="relative overflow-hidden group aspect-video bg-slate-900">
             <img src="assets/project_web.png" alt="januda.dev - Personal Portfolio Website"
@@ -567,7 +574,7 @@
 
         <!-- Project 02: News Desk -->
         <div
-          class="project-card card-surface overflow-hidden flex flex-col h-full"
+          class="project-card card-surface tilt-card overflow-hidden flex flex-col h-full"
           data-category="web">
           <div class="relative overflow-hidden group aspect-video bg-slate-900">
             <img src="assets/images/project_news.png" alt="News Desk - Web Development Project"
@@ -602,7 +609,7 @@
 
         <!-- Project 03: Hotel Billing System -->
         <div
-          class="project-card card-surface overflow-hidden flex flex-col h-full"
+          class="project-card card-surface tilt-card overflow-hidden flex flex-col h-full"
           data-category="system">
           <div class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-emerald-950 flex items-center justify-center p-6 text-center">
             <div class="space-y-2">
@@ -636,7 +643,7 @@
 
         <!-- Project 04: NSBM Route Finder -->
         <div
-          class="project-card card-surface overflow-hidden flex flex-col h-full"
+          class="project-card card-surface tilt-card overflow-hidden flex flex-col h-full"
           data-category="web">
           <div class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-teal-950 flex items-center justify-center p-6 text-center">
             <div class="space-y-2">
@@ -670,7 +677,7 @@
 
         <!-- Project 05: CabFlow Rides Mobile -->
         <div
-          class="project-card card-surface overflow-hidden flex flex-col h-full"
+          class="project-card card-surface tilt-card overflow-hidden flex flex-col h-full"
           data-category="mobile">
           <div class="relative overflow-hidden group aspect-video bg-slate-900">
             <img src="assets/project_taxi.png" alt="CabFlow Rides Mobile Application Mockup"
@@ -722,7 +729,7 @@
       <div class="max-w-4xl mx-auto space-y-8">
         
         <!-- Main University Card -->
-        <div class="card-surface p-8 sm:p-10 space-y-6">
+        <div class="card-surface tilt-card p-8 sm:p-10 space-y-6">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
             <div>
               <span class="inline-flex items-center px-3 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase mb-2">
@@ -769,7 +776,7 @@
         </div>
 
         <!-- Secondary Card: High School Foundation -->
-        <div class="card-surface p-6 sm:p-8 flex items-start gap-4">
+        <div class="card-surface tilt-card p-6 sm:p-8 flex items-start gap-4">
           <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
             <i class="fas fa-school"></i>
           </div>
@@ -803,7 +810,7 @@
       <div class="max-w-4xl mx-auto space-y-6">
         
         <!-- IEEE Xtreme 20.0 Card -->
-        <div class="card-surface p-8 sm:p-10 border-2 border-emerald-500/25 relative overflow-hidden">
+        <div class="card-surface tilt-card p-8 sm:p-10 border-2 border-emerald-500/25 relative overflow-hidden">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
             <div class="flex items-center space-x-4">
               <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-2xl flex-shrink-0">
