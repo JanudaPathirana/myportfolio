@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Themes, Scroll progress, mobile navigation, and typing animations
+  // Core website initializations
   initTheme();
   initScrollEffects();
   initMobileMenu();
@@ -7,14 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectFilters();
   initContactForm();
 
-  // 3D Interactive Enhancements
+  // 3D & Visual Interactive Enhancements
   init3DTilt();
-  initParallaxScroll();
-  initHeroInteractive3D();
+  initThreeHeroCanvas();
 });
 
 /* ==========================================
-   THEME TOGGLE SYSTEM
+   THEME TOGGLE SYSTEM (NSBM Emerald / Forest)
    ========================================== */
 function initTheme() {
   const themeToggleBtn = document.getElementById('theme-toggle');
@@ -24,10 +23,10 @@ function initTheme() {
   if (!themeToggleBtn) return;
 
   // Determine current theme setting from localStorage or system preference
-  if (
-    localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
+  const savedTheme = localStorage.getItem('color-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
     document.documentElement.classList.add('dark');
     themeToggleLightIcon?.classList.remove('hidden');
     themeToggleDarkIcon?.classList.add('hidden');
@@ -37,11 +36,11 @@ function initTheme() {
     themeToggleDarkIcon?.classList.remove('hidden');
   }
 
-  // Event listener for theme toggle button
   themeToggleBtn.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
     
-    if (document.documentElement.classList.contains('dark')) {
+    if (isDark) {
       themeToggleLightIcon?.classList.remove('hidden');
       themeToggleDarkIcon?.classList.add('hidden');
       localStorage.setItem('color-theme', 'dark');
@@ -52,11 +51,14 @@ function initTheme() {
       localStorage.setItem('color-theme', 'light');
       showToast('Switched to Light Mode', 'info');
     }
+
+    // Trigger visual canvas update if Three.js is active
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { isDark } }));
   });
 }
 
 /* ==========================================
-   SCROLL EFFECTS (Header shadow, Active Nav, Progress Bar, Back-To-Top)
+   SCROLL EFFECTS (Header, Active Link, Progress, Back-To-Top)
    ========================================== */
 function initScrollEffects() {
   const header = document.getElementById('header');
@@ -65,16 +67,18 @@ function initScrollEffects() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  window.addEventListener('scroll', () => {
+  let ticking = false;
+
+  function onScroll() {
     const scrollY = window.scrollY;
     
     // 1. Header background elevation
     if (header) {
-      if (scrollY > 50) {
-        header.classList.add('shadow-lg', 'backdrop-blur-xl', 'py-3');
+      if (scrollY > 40) {
+        header.classList.add('shadow-md', 'py-3');
         header.classList.remove('py-5');
       } else {
-        header.classList.remove('shadow-lg', 'py-3');
+        header.classList.remove('shadow-md', 'py-3');
         header.classList.add('py-5');
       }
     }
@@ -88,10 +92,10 @@ function initScrollEffects() {
 
     // 3. Back-To-Top Button Visibility
     if (backToTopBtn) {
-      if (scrollY > 500) {
-        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
+      if (scrollY > 400) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-8');
       } else {
-        backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-8');
       }
     }
 
@@ -101,16 +105,28 @@ function initScrollEffects() {
       const sectionTop = current.offsetTop - 120;
       const sectionId = current.getAttribute('id');
       
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         navLinks.forEach(link => {
-          link.classList.remove('text-cyan-600', 'dark:text-cyan-400', 'font-semibold');
+          link.classList.remove('text-emerald-600', 'dark:text-emerald-400', 'font-semibold', 'active-nav');
           if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('text-cyan-600', 'dark:text-cyan-400', 'font-semibold');
+            link.classList.add('text-emerald-600', 'dark:text-emerald-400', 'font-semibold', 'active-nav');
           }
         });
       }
     });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
   }, { passive: true });
+
+  // Initial call
+  onScroll();
 
   // Smooth scroll back to top on button click
   if (backToTopBtn) {
@@ -156,16 +172,16 @@ function initTypingEffect() {
   if (!typingTextElement) return;
 
   const words = [
-    'Software Engineering Undergraduate',
+    'Computer Science Undergraduate',
     'Full-Stack Developer',
-    'Tech Enthusiast & Learner',
-    'NSBM Green University Student'
+    'Python & Backend Developer',
+    'Algorithmic Problem Solver'
   ];
   
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
-  let typingSpeed = 100;
+  let typingSpeed = 90;
 
   function type() {
     const currentWord = words[wordIndex];
@@ -173,11 +189,11 @@ function initTypingEffect() {
     if (isDeleting) {
       typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
-      typingSpeed = 45;
+      typingSpeed = 40;
     } else {
       typingTextElement.textContent = currentWord.substring(0, charIndex + 1);
       charIndex++;
-      typingSpeed = 95;
+      typingSpeed = 90;
     }
 
     if (!isDeleting && charIndex === currentWord.length) {
@@ -186,7 +202,7 @@ function initTypingEffect() {
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
-      typingSpeed = 500;
+      typingSpeed = 450;
     }
 
     setTimeout(type, typingSpeed);
@@ -196,21 +212,23 @@ function initTypingEffect() {
 }
 
 /* ==========================================
-   INTERACTIVE PROJECTS FILTERING
+   PROJECT CARDS FILTERING
    ========================================== */
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
 
+  if (!filterBtns.length) return;
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => {
-        b.classList.remove('bg-cyan-500', 'text-white', 'shadow-lg', 'shadow-cyan-500/30', 'scale-105');
+        b.classList.remove('bg-emerald-600', 'text-white', 'shadow-lg', 'shadow-emerald-600/30');
         b.classList.add('bg-slate-100', 'text-slate-600', 'dark:bg-slate-800', 'dark:text-slate-300');
       });
       
       btn.classList.remove('bg-slate-100', 'text-slate-600', 'dark:bg-slate-800', 'dark:text-slate-300');
-      btn.classList.add('bg-cyan-500', 'text-white', 'shadow-lg', 'shadow-cyan-500/30', 'scale-105');
+      btn.classList.add('bg-emerald-600', 'text-white', 'shadow-lg', 'shadow-emerald-600/30');
 
       const filterValue = btn.getAttribute('data-filter');
 
@@ -219,16 +237,18 @@ function initProjectFilters() {
         
         if (filterValue === 'all' || categories.includes(filterValue)) {
           card.classList.remove('hidden');
+          card.style.display = 'flex';
           setTimeout(() => {
             card.style.opacity = '1';
-            card.style.transform = 'perspective(1000px) scale(1) translateY(0)';
-          }, 50);
+            card.style.transform = 'translateY(0) scale(1)';
+          }, 30);
         } else {
           card.style.opacity = '0';
-          card.style.transform = 'perspective(1000px) scale(0.95) translateY(10px)';
+          card.style.transform = 'translateY(10px) scale(0.96)';
           setTimeout(() => {
+            card.style.display = 'none';
             card.classList.add('hidden');
-          }, 300);
+          }, 250);
         }
       });
     });
@@ -236,21 +256,17 @@ function initProjectFilters() {
 }
 
 /* ==========================================
-   INTERACTIVE 3D TILT EFFECT & SPECULAR GLARE
+   INTERACTIVE 3D CARD TILT & MOUSE TRACKING
    ========================================== */
 function init3DTilt() {
-  // Check if touch device or reduced motion preferred
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (isTouchDevice || prefersReducedMotion) {
-    return; // Leave smooth static styling for touch & reduced-motion
-  }
+  if (isTouchDevice || prefersReducedMotion) return;
 
   const tiltCards = document.querySelectorAll('.tilt-card');
 
   tiltCards.forEach(card => {
-    // Add specular glare element if not already present
     let glare = card.querySelector('.tilt-glare');
     if (!glare) {
       glare = document.createElement('div');
@@ -258,50 +274,45 @@ function init3DTilt() {
       card.appendChild(glare);
     }
 
-    let isHovered = false;
     let bounds = null;
     let rAF = null;
 
     function onMouseEnter() {
-      isHovered = true;
       bounds = card.getBoundingClientRect();
-      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+      card.style.transition = 'transform 0.12s ease-out, box-shadow 0.12s ease-out';
     }
 
     function onMouseMove(e) {
-      if (!isHovered) return;
       if (!bounds) bounds = card.getBoundingClientRect();
 
       const mouseX = e.clientX - bounds.left;
       const mouseY = e.clientY - bounds.top;
 
-      const xNorm = mouseX / bounds.width; // 0 to 1
-      const yNorm = mouseY / bounds.height; // 0 to 1
+      const xNorm = mouseX / bounds.width;
+      const yNorm = mouseY / bounds.height;
 
-      // Tilt angles (subtle & professional: max 12 degrees)
-      const maxTilt = 12;
+      const maxTilt = 10;
       const tiltX = (yNorm - 0.5) * -maxTilt;
       const tiltY = (xNorm - 0.5) * maxTilt;
 
       if (rAF) cancelAnimationFrame(rAF);
 
       rAF = requestAnimationFrame(() => {
-        card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale3d(1.025, 1.025, 1.025)`;
+        card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.02)`;
         
         if (glare) {
-          glare.style.background = `radial-gradient(circle at ${xNorm * 100}% ${yNorm * 100}%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 65%)`;
+          glare.style.background = `radial-gradient(circle at ${xNorm * 100}% ${yNorm * 100}%, rgba(16, 185, 129, 0.2) 0%, transparent 65%)`;
           glare.style.opacity = '1';
         }
       });
     }
 
     function onMouseLeave() {
-      isHovered = false;
       bounds = null;
       if (rAF) cancelAnimationFrame(rAF);
 
-      card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
       
       if (glare) {
         glare.style.opacity = '0';
@@ -315,94 +326,112 @@ function init3DTilt() {
 }
 
 /* ==========================================
-   HERO AVATAR INTERACTIVE 3D MOUSE TRACKING
+   THREE.JS 3D HERO CONSTELLATION CANVAS
    ========================================== */
-function initHeroInteractive3D() {
-  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function initThreeHeroCanvas() {
+  // Graceful fallback check: Ensure Three.js is loaded and WebGL supported
+  if (typeof THREE === 'undefined') return;
 
-  if (isTouchDevice || prefersReducedMotion) return;
+  const canvas = document.getElementById('three-hero-canvas');
+  if (!canvas) return;
 
-  const heroSection = document.getElementById('home');
-  const avatarCard = document.querySelector('.hero-avatar-card');
-  const floatingChips = document.querySelectorAll('.floating-chip');
+  try {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    camera.position.z = 30;
 
-  if (!heroSection || !avatarCard) return;
-
-  let rAF = null;
-
-  heroSection.addEventListener('mousemove', (e) => {
-    const rect = heroSection.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    const rotX = y * -20;
-    const rotY = x * 20;
-
-    if (rAF) cancelAnimationFrame(rAF);
-
-    rAF = requestAnimationFrame(() => {
-      avatarCard.style.transform = `perspective(1200px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale(1.03)`;
-
-      // Dynamic parallax on floating chips
-      floatingChips.forEach((chip, idx) => {
-        const factor = (idx + 1) * 12;
-        const chipOffsetX = x * factor;
-        const chipOffsetY = y * factor;
-        chip.style.transform = `translate3d(${chipOffsetX.toFixed(1)}px, ${chipOffsetY.toFixed(1)}px, ${50 + factor}px)`;
-      });
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
     });
-  });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  heroSection.addEventListener('mouseleave', () => {
-    if (rAF) cancelAnimationFrame(rAF);
-    avatarCard.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
-    avatarCard.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)';
+    // Particle Constellation Geometry
+    const particleCount = window.innerWidth < 768 ? 40 : 80;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
 
-    floatingChips.forEach((chip) => {
-      chip.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
-      chip.style.transform = '';
-      setTimeout(() => { chip.style.transition = ''; }, 800);
-    });
-
-    setTimeout(() => { avatarCard.style.transition = ''; }, 800);
-  });
-}
-
-/* ==========================================
-   SMOOTH PARALLAX SCROLLING ENGINE
-   ========================================== */
-function initParallaxScroll() {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
-
-  const parallaxItems = document.querySelectorAll('[data-parallax-speed]');
-  if (!parallaxItems.length) return;
-
-  let ticking = false;
-
-  function updateParallax() {
-    const scrollY = window.scrollY;
-
-    parallaxItems.forEach(el => {
-      const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.15;
-      const yPos = scrollY * speed;
-      el.style.transform = `translate3d(0, ${yPos.toFixed(1)}px, 0)`;
-    });
-
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateParallax);
-      ticking = true;
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 50;
+      positions[i + 1] = (Math.random() - 0.5) * 35;
+      positions[i + 2] = (Math.random() - 0.5) * 30;
     }
-  }, { passive: true });
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    // NSBM Emerald Material
+    const material = new THREE.PointsMaterial({
+      color: 0x10b981,
+      size: 1.2,
+      transparent: true,
+      opacity: 0.65
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // Floating 3D Geometric Ring
+    const torusGeo = new THREE.TorusGeometry(12, 0.08, 16, 100);
+    const torusMat = new THREE.MeshBasicMaterial({
+      color: 0x008738,
+      transparent: true,
+      opacity: 0.25,
+      wireframe: true
+    });
+    const torus = new THREE.Mesh(torusGeo, torusMat);
+    torus.position.set(12, 0, -5);
+    scene.add(torus);
+
+    // Mouse Tracking Parallax
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth) - 0.5;
+      mouseY = (e.clientY / window.innerHeight) - 0.5;
+    }, { passive: true });
+
+    // Handle Window Resize
+    function onResize() {
+      if (!canvas) return;
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+    }
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // Animation Loop
+    let animId = null;
+    function animate() {
+      animId = requestAnimationFrame(animate);
+
+      targetX += (mouseX - targetX) * 0.04;
+      targetY += (mouseY - targetY) * 0.04;
+
+      particles.rotation.y += 0.001;
+      particles.rotation.x += 0.0005;
+      particles.position.x = targetX * 6;
+      particles.position.y = -targetY * 6;
+
+      torus.rotation.x += 0.002;
+      torus.rotation.y += 0.003;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  } catch (err) {
+    // If WebGL fails, gracefully log without stopping standard page rendering
+    console.warn('Three.js canvas initialized in fallback mode:', err);
+  }
 }
 
 /* ==========================================
-   CONTACT FORM VALIDATION & INTERACTION
+   CONTACT FORM VALIDATION
    ========================================== */
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
@@ -464,16 +493,16 @@ function initContactForm() {
         contactForm.reset();
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
-      }, 1400);
+      }, 1200);
     } else {
-      showToast('Please correct the validation errors in the form.', 'error');
+      showToast('Please check the required fields in the form.', 'error');
     }
   });
 }
 
 function setInputError(input, message) {
-  input.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
-  input.classList.remove('border-slate-200', 'dark:border-slate-700', 'focus:border-cyan-500', 'focus:ring-cyan-500');
+  input.classList.add('border-red-500', 'focus:border-red-500');
+  input.classList.remove('border-slate-200', 'dark:border-slate-700', 'focus:border-emerald-500');
   
   const helperText = input.nextElementSibling;
   if (helperText && helperText.classList.contains('error-message')) {
@@ -483,8 +512,8 @@ function setInputError(input, message) {
 }
 
 function resetInputValidation(input) {
-  input.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
-  input.classList.add('border-slate-200', 'dark:border-slate-700', 'focus:border-cyan-500', 'focus:ring-cyan-500');
+  input.classList.remove('border-red-500', 'focus:border-red-500');
+  input.classList.add('border-slate-200', 'dark:border-slate-700', 'focus:border-emerald-500');
   
   const helperText = input.nextElementSibling;
   if (helperText && helperText.classList.contains('error-message')) {
@@ -494,7 +523,7 @@ function resetInputValidation(input) {
 }
 
 /* ==========================================
-   TOAST NOTIFICATION ENGINE
+   TOAST NOTIFICATION ENGINE (NSBM Green)
    ========================================== */
 function showToast(message, type = 'success') {
   let toastContainer = document.getElementById('toast-container');
@@ -512,11 +541,11 @@ function showToast(message, type = 'success') {
   if (type === 'error') {
     iconClass = 'fas fa-exclamation-circle text-red-500';
   } else if (type === 'info') {
-    iconClass = 'fas fa-info-circle text-cyan-500';
+    iconClass = 'fas fa-info-circle text-emerald-500';
   }
 
   toast.innerHTML = `
-    <i class="${iconClass} text-xl"></i>
+    <i class="${iconClass} text-lg"></i>
     <span class="text-sm font-medium text-slate-800 dark:text-slate-100">${message}</span>
   `;
 
@@ -530,6 +559,6 @@ function showToast(message, type = 'success') {
     toast.classList.remove('show');
     setTimeout(() => {
       toast.remove();
-    }, 400);
-  }, 4000);
+    }, 350);
+  }, 3800);
 }

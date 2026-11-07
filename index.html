@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Januda | Software Engineering Student Portfolio</title>
+  <title>Januda Pathirana | Computer Science Undergraduate • NSBM Green University</title>
 
   <!-- SEO Meta Tags -->
   <meta name="description"
-    content="Portfolio of Januda, a Software Engineering Undergraduate at NSBM Green University, Sri Lanka. Showcase of projects, skills, and academic journey.">
+    content="Personal portfolio of Januda Pathirana, a Computer Science Undergraduate at NSBM Green University Town, Sri Lanka. Showcasing software engineering projects, technical skills, and algorithmic problem solving.">
   <meta name="keywords"
-    content="Software Engineer, Januda, Portfolio, NSBM, Sri Lanka, Web Developer, Full-stack, React, Python, Undergraduate">
-  <meta name="author" content="Januda">
+    content="Januda Pathirana, Computer Science, NSBM Green University, Sri Lanka, Software Engineer, Full-Stack Developer, Python, Java, C++, Web Developer, IEEE Xtreme">
+  <meta name="author" content="Januda Pathirana">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,8 +21,16 @@
       theme: {
         extend: {
           colors: {
-            slate: {
-              950: '#090d16',
+            nsbm: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              500: '#10b981',
+              600: '#008738', /* Official NSBM Green */
+              700: '#00732f',
+              800: '#005b25',
+              900: '#004d20',
+              950: '#051b0d',
             }
           },
           fontFamily: {
@@ -34,71 +42,64 @@
     }
   </script>
 
-  <!-- Google Fonts & FontAwesome -->
+  <!-- Three.js CDN for Interactive 3D Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Google Fonts & FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Custom Stylesheet with 3D Transforms & Glassmorphism -->
+  <!-- Custom Stylesheet with Official NSBM Green Theme & 3D Styling -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Custom JavaScript with 3D Tilt, Parallax & Interactive Engines -->
+  <!-- Custom JavaScript with 3D Tilt, Canvas & Interactive Engines -->
   <script src="script.js" defer></script>
 </head>
 
-<body
-  class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased overflow-x-hidden relative">
-
-  <!-- Fixed Smooth Parallax 3D Background Layer -->
-  <div class="parallax-bg-layer" aria-hidden="true">
-    <div class="bg-perspective-grid"></div>
-    <!-- Parallax Glowing Ambient Nebula Orbs at Varying Z-Depth Rates -->
-    <div class="parallax-orb parallax-orb-cyan w-[550px] h-[550px] top-[-100px] left-[-150px]" data-parallax-speed="0.18"></div>
-    <div class="parallax-orb parallax-orb-violet w-[600px] h-[600px] top-[750px] right-[-180px]" data-parallax-speed="-0.22"></div>
-    <div class="parallax-orb parallax-orb-pink w-[480px] h-[480px] top-[1700px] left-[5%]" data-parallax-speed="0.25"></div>
-    <div class="parallax-orb parallax-orb-cyan w-[620px] h-[620px] top-[2600px] right-[4%]" data-parallax-speed="-0.16"></div>
-    <div class="parallax-orb parallax-orb-violet w-[520px] h-[520px] top-[3600px] left-[-80px]" data-parallax-speed="0.2"></div>
-  </div>
+<body class="antialiased overflow-x-hidden relative">
 
   <!-- Scroll Progress Indicator -->
   <div id="scroll-progress"></div>
 
   <!-- Header / Navigation -->
-  <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-nav py-5">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+  <header id="header" class="fixed top-0 left-0 w-full z-50 glass-nav py-5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
       <!-- Logo -->
       <a href="#home" id="nav-logo"
-        class="text-2xl font-extrabold tracking-wider text-gradient-animate focus:outline-none transition-transform hover:scale-105">
-        JANUDA<span class="text-cyan-500">.DEV</span>
+        class="text-xl sm:text-2xl font-extrabold tracking-wider text-gradient-nsbm focus:outline-none transition-transform hover:scale-105">
+        JANUDA<span class="text-emerald-500">.DEV</span>
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="hidden md:flex items-center space-x-8">
+      <nav class="hidden md:flex items-center space-x-7">
         <a href="#home" id="nav-link-home"
-          class="nav-link text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Home</a>
+          class="nav-link text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Home</a>
         <a href="#about" id="nav-link-about"
-          class="nav-link text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">About</a>
+          class="nav-link text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About</a>
         <a href="#skills" id="nav-link-skills"
-          class="nav-link text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Skills</a>
+          class="nav-link text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Skills</a>
         <a href="#projects" id="nav-link-projects"
-          class="nav-link text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Projects</a>
-        <a href="#timeline" id="nav-link-timeline"
-          class="nav-link text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Education</a>
+          class="nav-link text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Projects</a>
+        <a href="#education" id="nav-link-education"
+          class="nav-link text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Education</a>
+        <a href="#achievements" id="nav-link-achievements"
+          class="nav-link text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Achievements</a>
         <a href="#contact" id="nav-link-contact"
-          class="nav-link text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Contact</a>
+          class="nav-link text-sm font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Contact</a>
       </nav>
 
       <!-- Theme Toggle & Mobile Menu Trigger -->
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-3 sm:space-x-4">
         <!-- Dark Mode Toggle Button -->
         <button id="theme-toggle" type="button" aria-label="Toggle Dark Mode"
-          class="btn-3d-secondary p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
-          <i id="theme-toggle-dark-icon" class="fas fa-moon text-lg"></i>
-          <i id="theme-toggle-light-icon" class="fas fa-sun text-lg hidden text-amber-400"></i>
+          class="btn-nsbm-secondary p-2.5 rounded-xl border text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-900 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <i id="theme-toggle-dark-icon" class="fas fa-moon text-base"></i>
+          <i id="theme-toggle-light-icon" class="fas fa-sun text-base hidden text-emerald-500"></i>
         </button>
 
         <!-- Mobile Menu Hamburger Button -->
         <button id="mobile-menu-btn" type="button" aria-label="Open Navigation Menu"
-          class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
-          <i class="fas fa-bars text-lg"></i>
+          class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-900 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <i class="fas fa-bars text-base"></i>
         </button>
       </div>
     </div>
@@ -106,418 +107,378 @@
 
   <!-- Mobile Drawer Menu -->
   <div id="mobile-menu"
-    class="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-md flex justify-end hidden transition-all duration-300">
+    class="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-md flex justify-end hidden transition-all duration-300">
     <div
-      class="w-72 h-full bg-white dark:bg-slate-950 p-8 flex flex-col justify-between shadow-2xl border-l border-slate-200/50 dark:border-slate-800/50">
+      class="w-72 h-full bg-white dark:bg-slate-950 p-8 flex flex-col justify-between shadow-2xl border-l border-emerald-900/20">
       <div class="space-y-6">
         <div class="flex justify-between items-center">
-          <span class="text-xl font-bold text-gradient-animate">Navigation</span>
+          <span class="text-xl font-bold text-gradient-nsbm">Navigation</span>
         </div>
         <nav class="flex flex-col space-y-4">
-          <a href="#home" id="mobile-nav-home"
-            class="mobile-nav-link text-lg font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Home</a>
-          <a href="#about" id="mobile-nav-about"
-            class="mobile-nav-link text-lg font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">About</a>
-          <a href="#skills" id="mobile-nav-skills"
-            class="mobile-nav-link text-lg font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Skills</a>
-          <a href="#projects" id="mobile-nav-projects"
-            class="mobile-nav-link text-lg font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Projects</a>
-          <a href="#timeline" id="mobile-nav-timeline"
-            class="mobile-nav-link text-lg font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Education</a>
-          <a href="#contact" id="mobile-nav-contact"
-            class="mobile-nav-link text-lg font-medium text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">Contact</a>
+          <a href="#home" class="mobile-nav-link text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Home</a>
+          <a href="#about" class="mobile-nav-link text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About</a>
+          <a href="#skills" class="mobile-nav-link text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Skills</a>
+          <a href="#projects" class="mobile-nav-link text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Projects</a>
+          <a href="#education" class="mobile-nav-link text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Education</a>
+          <a href="#achievements" class="mobile-nav-link text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Achievements</a>
+          <a href="#contact" class="mobile-nav-link text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Contact</a>
         </nav>
       </div>
       <div class="text-center text-xs text-slate-400">
-        © 2026 Januda. Built with ❤️
+        Januda Pathirana • NSBM Green University
       </div>
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden perspective-container">
-    <div
-      class="max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 w-full">
-      <!-- Intro text (3D Depth Preserved) -->
-      <div class="order-2 md:order-1 space-y-6 text-center md:text-left preserve-3d">
+  <!-- Hero Section (Safe, Robust Layout with No Clipping & Three.js Canvas) -->
+  <section id="home" class="relative min-h-[90vh] flex items-center pt-24 sm:pt-28 pb-16 overflow-hidden">
+    <!-- Three.js Interactive Particle Background Canvas -->
+    <canvas id="three-hero-canvas"></canvas>
+    <div class="bg-grid-mesh"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10 w-full">
+      
+      <!-- Intro text (Left Column: 7 Cols on desktop) -->
+      <div class="md:col-span-7 space-y-6 text-center md:text-left order-2 md:order-1">
+        
+        <!-- University Badge -->
         <div
-          class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 dark:border-cyan-400/10 text-xs font-semibold uppercase tracking-wider mx-auto md:mx-0 shadow-sm layer-z-20">
-          <span class="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
-          <span>Open for Opportunities</span>
+          class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25 text-xs font-semibold uppercase tracking-wider mx-auto md:mx-0 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>Computer Science Undergraduate • NSBM Green University</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight layer-z-30">
+        <!-- Name Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
           Hi, I am <br>
-          <span class="text-gradient-animate font-extrabold">Januda</span>
+          <span class="text-gradient-nsbm font-extrabold">Januda Pathirana</span>
         </h1>
 
         <!-- Typewriter Container -->
-        <div class="h-8 flex justify-center md:justify-start items-center layer-z-20">
+        <div class="h-8 flex justify-center md:justify-start items-center">
           <span id="typing-text"
-            class="typing-cursor text-xl sm:text-2xl font-mono text-cyan-600 dark:text-cyan-400 font-semibold"></span>
+            class="typing-cursor text-lg sm:text-2xl font-mono text-emerald-700 dark:text-emerald-400 font-semibold"></span>
         </div>
 
-        <p class="text-slate-600 dark:text-slate-400 max-w-lg text-lg mx-auto md:mx-0 leading-relaxed layer-z-10">
-          Software engineering undergraduate student at NSBM Green University Town, Sri Lanka. I build clean, efficient,
-          and beautifully designed web and mobile experiences.
+        <!-- Bio Introduction -->
+        <p class="text-slate-600 dark:text-slate-300 max-w-xl text-base sm:text-lg mx-auto md:mx-0 leading-relaxed">
+          Computer Science undergraduate student at <strong class="text-emerald-800 dark:text-emerald-300">NSBM Green University Town, Sri Lanka</strong>. I build clean, efficient software solutions with an emphasis on <strong>Full-Stack Development</strong>, <strong>Python & Backend Development</strong>, and <strong>Algorithmic Problem Solving</strong>.
         </p>
 
-        <!-- 3D Action Buttons -->
-        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4 preserve-3d">
-          <a href="#contact" id="hero-btn-connect"
-            class="btn-3d-primary px-8 py-3.5 rounded-2xl bg-cyan-500 text-white font-medium text-center focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
-            <span class="inline-flex items-center layer-z-20">
-              Let's Connect <i class="fas fa-arrow-right ml-2 text-sm"></i>
-            </span>
-          </a>
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-3">
           <a href="#projects" id="hero-btn-projects"
-            class="btn-3d-secondary px-8 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-900 transition-all text-center focus:outline-none focus:ring-2 focus:ring-cyan-500">
-            <span class="inline-flex items-center layer-z-20">View Work</span>
+            class="btn-nsbm-primary px-7 py-3.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            Explore Work <i class="fas fa-arrow-right ml-2 text-xs"></i>
+          </a>
+          <a href="#contact" id="hero-btn-contact"
+            class="btn-nsbm-secondary px-7 py-3.5 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            Get In Touch <i class="fas fa-paper-plane ml-2 text-xs text-emerald-600 dark:text-emerald-400"></i>
           </a>
         </div>
       </div>
 
-      <!-- Avatar Showcase (3D Depth, Orbit Rings & Floating Anti-Gravity Chips) -->
-      <div class="order-1 md:order-2 flex justify-center items-center hero-tilt-wrapper">
-        <div class="hero-avatar-card relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center">
+      <!-- 3D Avatar Showcase (Right Column: 5 Cols on desktop, Centered) -->
+      <div class="md:col-span-5 flex justify-center items-center order-1 md:order-2">
+        <div class="hero-avatar-wrapper tilt-card">
           
-          <!-- Outer 3D Orbit Ring (Dashed Cyan with rotating satellite node) -->
-          <div
-            class="absolute inset-0 rounded-full border border-dashed border-cyan-500/40 dark:border-cyan-400/30 animate-orbit-slow pointer-events-none">
-            <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_12px_#22d3ee]"></div>
-          </div>
+          <!-- Outer Rotating Orbit Rings -->
+          <div class="avatar-orbit-outer"></div>
+          <div class="avatar-orbit-inner"></div>
+          <div class="avatar-glow-halo"></div>
 
-          <!-- Secondary Counter Orbit Ring (Violet) -->
-          <div
-            class="absolute inset-2 rounded-full border border-dotted border-violet-500/30 dark:border-violet-400/20 animate-orbit-counter pointer-events-none">
-            <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-violet-400 shadow-[0_0_10px_#a78bfa]"></div>
-          </div>
-
-          <!-- Glowing 3D Pulse Aura -->
-          <div
-            class="absolute inset-4 rounded-full bg-gradient-to-tr from-cyan-500/30 via-violet-500/20 to-pink-500/30 filter blur-2xl animate-pulse-halo pointer-events-none">
-          </div>
-
-          <!-- Main Circular Avatar Frame (3D Depth Preserved & Framed Portrait) -->
-          <div class="hero-avatar-frame animate-anti-gravity">
-            <img src="assets/avatar.png" alt="Januda - Software Engineering Undergraduate"
-              class="hero-avatar-img"
+          <!-- Main 3D Avatar Frame -->
+          <div class="avatar-frame-3d">
+            <img src="assets/avatar-3d.png" alt="Januda Pathirana 3D Avatar - Computer Science Student"
+              class="avatar-img-3d"
               loading="eager"
-              onerror="this.onerror=null; this.src='assets/avatar.jpg';">
-            <!-- Dynamic glass surface reflection overlay -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none"></div>
+              onerror="this.onerror=null; this.src='assets/avatar-3d.jpg';">
           </div>
 
-          <!-- Floating Anti-Gravity 3D Tech Chips -->
+          <!-- Floating Interactive Tech Chips (NSBM Green Styled) -->
           <!-- Chip 1: Full-Stack Dev (Top-Right) -->
-          <div class="floating-chip -top-3 -right-2 sm:top-2 sm:-right-4 animate-float-badge-1" style="transform: translateZ(55px);">
-            <i class="fab fa-react text-cyan-500 dark:text-cyan-400 text-base"></i>
+          <div class="floating-chip -top-2 -right-2 sm:top-2 sm:-right-4 animate-chip-1">
+            <i class="fas fa-code text-emerald-600 dark:text-emerald-400 text-sm"></i>
             <span>Full-Stack Dev</span>
           </div>
 
           <!-- Chip 2: Python & Backend (Bottom-Left) -->
-          <div class="floating-chip -bottom-3 -left-2 sm:bottom-4 sm:-left-6 animate-float-badge-2" style="transform: translateZ(65px);">
-            <i class="fab fa-python text-amber-500 dark:text-amber-400 text-base"></i>
+          <div class="floating-chip -bottom-3 -left-2 sm:bottom-4 sm:-left-6 animate-chip-2">
+            <i class="fab fa-python text-emerald-600 dark:text-emerald-400 text-base"></i>
             <span>Python & Backend</span>
           </div>
 
-          <!-- Chip 3: NSBM Undergraduate (Bottom-Right) -->
-          <div class="floating-chip -bottom-4 right-4 sm:-bottom-2 sm:right-6 animate-float-badge-3" style="transform: translateZ(50px);">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-ping"></span>
-            <span>NSBM Student</span>
+          <!-- Chip 3: Problem Solving (Bottom-Right) -->
+          <div class="floating-chip -bottom-3 right-2 sm:-bottom-2 sm:right-4 animate-chip-3">
+            <i class="fas fa-brain text-emerald-600 dark:text-emerald-400 text-sm"></i>
+            <span>Problem Solving</span>
           </div>
 
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-24 relative bg-white/40 dark:bg-slate-900/30 backdrop-blur-md perspective-container">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+  <!-- About Me Section -->
+  <section id="about" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
       <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2
-          class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
-          About Me</h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">My educational journey and professional outlook</p>
+        <h2 class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
+          About Me
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-base sm:text-lg">
+          My academic foundation, computer science journey, and engineering mindset
+        </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text details -->
         <div class="lg:col-span-7 space-y-6">
-          <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-200">
-            A Passionate Developer in the Making
+          <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+            Driven by Logic, Scalability, and Clean Architecture
           </h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
-            I am currently pursuing a B.Sc. (Hons) in Software Engineering at the **National School of Business
-            Management (NSBM) Green University Town, Sri Lanka**. Being surrounded by high-tech facilities and an
-            inspiring community has catalyzed my interest in algorithms, responsive systems, and standard software
-            engineering practices.
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+            I am currently pursuing a <strong>B.Sc. in Computer Science at the National School of Business Management (NSBM) Green University Town, Sri Lanka</strong>. Learning in an advanced green university campus environment has fueled my dedication to core computer science fundamentals, data structures, and standard software engineering practices.
           </p>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
-            My development focus is creating scalable, user-centric interfaces using modern frameworks. I take pride in
-            writing well-documented, elegant, and maintainable code. Whether tackling frontend animations or
-            architecting core server endpoints, I am always ready to adopt new methodologies and learn from industry
-            leaders.
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+            My development focus spans across <strong>Software Engineering, Web Development, Mobile Application Development, and Database Systems</strong>. I place high value on writing clean, well-documented, and maintainable code. Whether tackling frontend animations, relational database modeling, or algorithmic challenge problem-solving, I am always enthusiastic about learning new technologies and engineering impactful solutions.
           </p>
 
-          <!-- Quick personal metadata bullet points -->
-          <div class="grid grid-cols-2 gap-4 pt-4">
+          <!-- Personal Metadata Bullet Points -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
             <div class="flex items-center space-x-3 text-slate-700 dark:text-slate-300">
-              <i class="fas fa-university text-cyan-500 w-5"></i>
-              <span>NSBM Student</span>
+              <i class="fas fa-university text-emerald-600 dark:text-emerald-400 w-5"></i>
+              <span>NSBM Green University</span>
             </div>
             <div class="flex items-center space-x-3 text-slate-700 dark:text-slate-300">
-              <i class="fas fa-map-marker-alt text-cyan-500 w-5"></i>
+              <i class="fas fa-map-marker-alt text-emerald-600 dark:text-emerald-400 w-5"></i>
               <span>Colombo, Sri Lanka</span>
             </div>
             <div class="flex items-center space-x-3 text-slate-700 dark:text-slate-300">
-              <i class="fas fa-graduation-cap text-cyan-500 w-5"></i>
-              <span>B.Sc. Software Engineering</span>
+              <i class="fas fa-graduation-cap text-emerald-600 dark:text-emerald-400 w-5"></i>
+              <span>B.Sc. Computer Science</span>
             </div>
             <div class="flex items-center space-x-3 text-slate-700 dark:text-slate-300">
-              <i class="fas fa-envelope text-cyan-500 w-5"></i>
-              <span>januda@placeholder.com</span>
+              <i class="fas fa-envelope text-emerald-600 dark:text-emerald-400 w-5"></i>
+              <span>nethmirajanuda@gmail.com</span>
             </div>
           </div>
         </div>
 
-        <!-- Academic highlights 3D statistics cards -->
-        <div class="lg:col-span-5 grid grid-cols-2 gap-6 preserve-3d">
-          <!-- Stat 1 -->
-          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
-            <div
-              class="w-12 h-12 rounded-xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
-              <i class="fas fa-star"></i>
+        <!-- Academic & Technical Highlights Cards -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-5 sm:gap-6">
+          <!-- Card 1 -->
+          <div class="glass-card tilt-card p-6 text-center">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mx-auto mb-3">
+              <i class="fas fa-graduation-cap"></i>
             </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">3.8</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">GPA Score</span>
+            <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">B.Sc.</span>
+            <span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Computer Science</span>
           </div>
 
-          <!-- Stat 2 -->
-          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
-            <div
-              class="w-12 h-12 rounded-xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
-              <i class="fas fa-code-branch"></i>
+          <!-- Card 2 -->
+          <div class="glass-card tilt-card p-6 text-center">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mx-auto mb-3">
+              <i class="fas fa-university"></i>
             </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">12+</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">Completed Projects</span>
+            <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">NSBM</span>
+            <span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Green University</span>
           </div>
 
-          <!-- Stat 3 -->
-          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
-            <div
-              class="w-12 h-12 rounded-xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
-              <i class="fas fa-clock"></i>
+          <!-- Card 3 -->
+          <div class="glass-card tilt-card p-6 text-center">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mx-auto mb-3">
+              <i class="fas fa-trophy"></i>
             </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">1k+</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">Coding Hours</span>
+            <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">IEEE</span>
+            <span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Xtreme 20.0</span>
           </div>
 
-          <!-- Stat 4 -->
-          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
-            <div
-              class="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
-              <i class="fas fa-award"></i>
-            </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">5+</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">Certificates</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="py-24 relative perspective-container">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2
-          class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
-          My Skills</h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">My engineering toolbox categorized by domain</p>
-      </div>
-
-      <!-- Skills Category Grid (3D Depth & Tilt Cards) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 preserve-3d">
-
-        <!-- Category 1: Languages -->
-        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4 layer-z-30">
-            <div
-              class="w-12 h-12 rounded-2xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-xl">
+          <!-- Card 4 -->
+          <div class="glass-card tilt-card p-6 text-center">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mx-auto mb-3">
               <i class="fas fa-code"></i>
             </div>
-            <h3 class="text-xl font-bold">Languages</h3>
+            <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Full-Stack</span>
+            <span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">& Python Dev</span>
           </div>
-          <div class="space-y-4 pt-2 layer-z-20">
-            <!-- Skill Item -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section id="skills" class="py-24 relative bg-slate-50/60 dark:bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
+          Technical Skills
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-base sm:text-lg">
+          My core technologies and tools categorized by engineering domain
+        </p>
+      </div>
+
+      <!-- Skills Grid (4 Categories Specified) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+
+        <!-- Category 1: Programming Languages -->
+        <div class="glass-card tilt-card p-7 space-y-6">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Programming</h3>
+          </div>
+          <div class="space-y-4 pt-1">
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
+              <div class="flex justify-between text-sm font-medium mb-1.5">
                 <span>Python</span>
-                <span class="text-slate-500 dark:text-slate-400">85%</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Primary</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 85%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 88%"></div>
               </div>
             </div>
-            <!-- Skill Item -->
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>JavaScript</span>
-                <span class="text-slate-500 dark:text-slate-400">80%</span>
-              </div>
-              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 80%"></div>
-              </div>
-            </div>
-            <!-- Skill Item -->
-            <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
+              <div class="flex justify-between text-sm font-medium mb-1.5">
                 <span>Java</span>
-                <span class="text-slate-500 dark:text-slate-400">75%</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Core OOP</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 75%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 78%"></div>
               </div>
             </div>
-            <!-- Skill Item -->
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
+              <div class="flex justify-between text-sm font-medium mb-1.5">
                 <span>C++</span>
-                <span class="text-slate-500 dark:text-slate-400">60%</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Algorithms</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 60%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 70%"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Category 2: Frontend -->
-        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4 layer-z-30">
-            <div
-              class="w-12 h-12 rounded-2xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-xl">
+        <!-- Category 2: Web Development -->
+        <div class="glass-card tilt-card p-7 space-y-6">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
               <i class="fas fa-laptop-code"></i>
             </div>
-            <h3 class="text-xl font-bold">Frontend</h3>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Web Development</h3>
           </div>
-          <div class="space-y-4 pt-2 layer-z-20">
-            <!-- Skill Item -->
+          <div class="space-y-4 pt-1">
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
+              <div class="flex justify-between text-sm font-medium mb-1.5">
                 <span>HTML5 / CSS3</span>
-                <span class="text-slate-500 dark:text-slate-400">90%</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Responsive</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-violet-500 h-full rounded-full transition-all duration-1000" style="width: 90%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 90%"></div>
               </div>
             </div>
-            <!-- Skill Item -->
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>Tailwind CSS</span>
-                <span class="text-slate-500 dark:text-slate-400">85%</span>
+              <div class="flex justify-between text-sm font-medium mb-1.5">
+                <span>JavaScript (ES6+)</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Interactive</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-violet-500 h-full rounded-full transition-all duration-1000" style="width: 85%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 82%"></div>
               </div>
             </div>
-            <!-- Skill Item -->
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>React / NextJS</span>
-                <span class="text-slate-500 dark:text-slate-400">70%</span>
+              <div class="flex justify-between text-sm font-medium mb-1.5">
+                <span>Modern Layouts</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Tailwind</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-violet-500 h-full rounded-full transition-all duration-1000" style="width: 70%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 85%"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Category 3: Backend & Database -->
-        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4 layer-z-30">
-            <div
-              class="w-12 h-12 rounded-2xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-xl">
-              <i class="fas fa-server"></i>
+        <!-- Category 3: Database Systems -->
+        <div class="glass-card tilt-card p-7 space-y-6">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fas fa-database"></i>
             </div>
-            <h3 class="text-xl font-bold">Backend & DB</h3>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Database Systems</h3>
           </div>
-          <div class="space-y-4 pt-2 layer-z-20">
-            <!-- Skill Item -->
+          <div class="space-y-4 pt-1">
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>Node.js / Express</span>
-                <span class="text-slate-500 dark:text-slate-400">75%</span>
+              <div class="flex justify-between text-sm font-medium mb-1.5">
+                <span>MySQL</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Relational</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-pink-500 h-full rounded-full transition-all duration-1000" style="width: 75%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 80%"></div>
               </div>
             </div>
-            <!-- Skill Item -->
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>SQL / Databases</span>
-                <span class="text-slate-500 dark:text-slate-400">80%</span>
+              <div class="flex justify-between text-sm font-medium mb-1.5">
+                <span>SQL Queries & Design</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Normalization</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-pink-500 h-full rounded-full transition-all duration-1000" style="width: 80%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 84%"></div>
               </div>
             </div>
-            <!-- Skill Item -->
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>MongoDB</span>
-                <span class="text-slate-500 dark:text-slate-400">70%</span>
+              <div class="flex justify-between text-sm font-medium mb-1.5">
+                <span>Data Modeling</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">ER Diagrams</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-pink-500 h-full rounded-full transition-all duration-1000" style="width: 70%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 75%"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Category 4: Tools & Devops -->
-        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4 layer-z-30">
-            <div
-              class="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-500 flex items-center justify-center text-xl">
+        <!-- Category 4: Developer Tools -->
+        <div class="glass-card tilt-card p-7 space-y-6">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
               <i class="fas fa-tools"></i>
             </div>
-            <h3 class="text-xl font-bold">Tools</h3>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Developer Tools</h3>
           </div>
-          <div class="space-y-4 pt-2 layer-z-20">
-            <!-- Skill Item -->
+          <div class="space-y-4 pt-1">
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>Git / GitHub</span>
-                <span class="text-slate-500 dark:text-slate-400">90%</span>
+              <div class="flex justify-between text-sm font-medium mb-1.5">
+                <span>Git Version Control</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Workflows</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 90%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 88%"></div>
               </div>
             </div>
-            <!-- Skill Item -->
             <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
+              <div class="flex justify-between text-sm font-medium mb-1.5">
+                <span>GitHub</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">Collaboration</span>
+              </div>
+              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1.5">
                 <span>VS Code</span>
-                <span class="text-slate-500 dark:text-slate-400">95%</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-mono text-xs">IDE & Tooling</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 95%"></div>
-              </div>
-            </div>
-            <!-- Skill Item -->
-            <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span>Docker</span>
-                <span class="text-slate-500 dark:text-slate-400">55%</span>
-              </div>
-              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 55%"></div>
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 95%"></div>
               </div>
             </div>
           </div>
@@ -527,110 +488,112 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-24 relative bg-white/40 dark:bg-slate-900/30 backdrop-blur-md perspective-container">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+  <!-- Projects Section (Preserving All Verified Projects & Assets) -->
+  <section id="projects" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
       <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2
-          class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
-          My Projects</h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">A selection of items I have built during my
-          engineering studies</p>
+        <h2 class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
+          Featured Projects
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-base sm:text-lg">
+          Software engineering applications and developer tools built during my studies
+        </p>
       </div>
 
-      <!-- Filters Navigation tabs -->
-      <div class="flex flex-wrap justify-center items-center gap-3 mb-12 preserve-3d">
+      <!-- Filters Navigation Tabs -->
+      <div class="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 mb-12">
         <button type="button" id="project-filter-all" data-filter="all"
-          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-semibold bg-cyan-500 text-white shadow-lg shadow-cyan-500/30 transition-all focus:outline-none">All
-          Work</button>
+          class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-emerald-600 text-white shadow-md shadow-emerald-600/30 transition-all focus:outline-none">
+          All Work
+        </button>
         <button type="button" id="project-filter-web" data-filter="web"
-          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Web
-          Apps</button>
+          class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">
+          Web Apps
+        </button>
         <button type="button" id="project-filter-mobile" data-filter="mobile"
-          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Mobile
-          Apps</button>
+          class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">
+          Mobile Apps
+        </button>
         <button type="button" id="project-filter-system" data-filter="system"
-          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Systems/Console</button>
+          class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">
+          Systems / Console
+        </button>
       </div>
 
-      <!-- Projects Grid (3D Depth, Preserved Layout & Interactive Tilt) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 preserve-3d">
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
         <!-- Project 1: Synergy Analytics Dashboard -->
         <div
-          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card tilt-card overflow-hidden flex flex-col h-full border border-slate-200/60 dark:border-slate-800"
           data-category="web">
-          <div class="relative overflow-hidden group aspect-video bg-slate-900 layer-z-10">
+          <div class="relative overflow-hidden group aspect-video bg-slate-900">
             <img src="assets/project_web.png" alt="Synergy Analytics Dashboard Workspace Mockup"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy">
             <div
-              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2026</span>
+              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span class="text-white text-xs font-medium"><i class="fas fa-calendar-alt mr-2 text-emerald-400"></i>2026</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
+          <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
             <div>
-              <div class="flex items-center space-x-2 mb-3 layer-z-30">
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider">React</span>
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-violet-500/10 dark:bg-violet-400/5 text-violet-600 dark:text-violet-400 text-xs font-semibold uppercase tracking-wider">NodeJS</span>
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">React</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">NodeJS</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">Synergy Analytics</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                A modern visual telemetry analytics dashboard for tracking web server metrics. Includes graph
-                visualizers, latency warnings, and database health meters.
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Synergy Analytics</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                A modern visual telemetry analytics dashboard for tracking web server metrics. Includes real-time graph visualizers, latency warnings, and database health meters.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6 preserve-3d">
-              <a href="https://github.com" id="project-btn-synergy-code" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-secondary flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+            <div class="flex items-center space-x-3 pt-2">
+              <a href="https://github.com/JanudaPathirana" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-secondary flex-1 text-center py-2.5 text-xs font-semibold">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code
               </a>
-              <a href="https://example.com" id="project-btn-synergy-demo" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-primary flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
-                <i class="fas fa-external-link-alt mr-1.5"></i> Live Demo
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-primary flex-1 text-center py-2.5 text-xs font-semibold">
+                <i class="fas fa-external-link-alt mr-1.5 text-xs"></i> Live Demo
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Project 2: Nexa Connect -->
+        <!-- Project 2: Nexa Connect Mobile -->
         <div
-          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card tilt-card overflow-hidden flex flex-col h-full border border-slate-200/60 dark:border-slate-800"
           data-category="mobile">
-          <div class="relative overflow-hidden group aspect-video bg-slate-900 layer-z-10">
+          <div class="relative overflow-hidden group aspect-video bg-slate-900">
             <img src="assets/project_mobile.png" alt="Nexa Connect Mobile Application Screen Mockup"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy">
             <div
-              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2025</span>
+              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span class="text-white text-xs font-medium"><i class="fas fa-calendar-alt mr-2 text-emerald-400"></i>2025</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
+          <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
             <div>
-              <div class="flex items-center space-x-2 mb-3 layer-z-30">
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-orange-500/10 dark:bg-orange-400/5 text-orange-600 dark:text-orange-400 text-xs font-semibold uppercase tracking-wider">Flutter</span>
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-pink-500/10 dark:bg-pink-400/5 text-pink-600 dark:text-pink-400 text-xs font-semibold uppercase tracking-wider">Firebase</span>
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">Flutter</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">Firebase</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">Nexa Connect Mobile</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                A sleek mobile-first productivity tool. Features activity milestones tracking, weekly challenges list,
-                progress graphs, and a social connection portal.
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Nexa Connect Mobile</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                A sleek mobile-first productivity tool. Features activity milestones tracking, weekly challenges list, progress graphs, and a social connection portal.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6 preserve-3d">
-              <a href="https://github.com" id="project-btn-nexa-code" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-secondary flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+            <div class="flex items-center space-x-3 pt-2">
+              <a href="https://github.com/JanudaPathirana" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-secondary flex-1 text-center py-2.5 text-xs font-semibold">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code
               </a>
-              <a href="https://example.com" id="project-btn-nexa-demo" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-primary flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
-                <i class="fas fa-external-link-alt mr-1.5"></i> App Demo
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-primary flex-1 text-center py-2.5 text-xs font-semibold">
+                <i class="fas fa-external-link-alt mr-1.5 text-xs"></i> App Demo
               </a>
             </div>
           </div>
@@ -638,34 +601,32 @@
 
         <!-- Project 3: Hotel Billing System -->
         <div
-          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card tilt-card overflow-hidden flex flex-col h-full border border-slate-200/60 dark:border-slate-800"
           data-category="system">
-          <div
-            class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-indigo-950 flex items-center justify-center p-6 text-center layer-z-10">
+          <div class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-emerald-950 flex items-center justify-center p-6 text-center">
             <div class="space-y-2">
-              <i class="fas fa-file-invoice text-4xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
-              <div class="text-xs font-mono text-cyan-500/80">cli_billing_system.py</div>
+              <i class="fas fa-file-invoice text-4xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+              <div class="text-xs font-mono text-emerald-400/90">cli_billing_system.py</div>
             </div>
             <div
-              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2026</span>
+              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span class="text-white text-xs font-medium"><i class="fas fa-calendar-alt mr-2 text-emerald-400"></i>2026</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
+          <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
             <div>
-              <div class="flex items-center space-x-2 mb-3 layer-z-30">
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider">Python</span>
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">Python</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">Console CLI</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">Hotel Billing System</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                A Python-based checkout program. Computes subtotals, applies custom service charges, manages food item
-                lists, and outputs detailed invoice printouts.
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Hotel Billing System</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                A Python-based checkout program. Computes subtotals, applies custom service charges, manages food item inventories, and outputs detailed invoice printouts.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6 preserve-3d">
-              <a href="https://github.com" id="project-btn-billing-code" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-secondary flex-grow text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+            <div class="flex items-center space-x-3 pt-2">
+              <a href="https://github.com/JanudaPathirana" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-secondary flex-grow text-center py-2.5 text-xs font-semibold">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Source Code
               </a>
             </div>
@@ -674,79 +635,70 @@
 
         <!-- Project 4: NSBM Route Finder -->
         <div
-          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card tilt-card overflow-hidden flex flex-col h-full border border-slate-200/60 dark:border-slate-800"
           data-category="web">
-          <div
-            class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-emerald-950 flex items-center justify-center p-6 text-center layer-z-10">
+          <div class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-emerald-900 flex items-center justify-center p-6 text-center">
             <div class="space-y-2">
               <i class="fas fa-map-marked-alt text-4xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
-              <div class="text-xs font-mono text-emerald-500/80">campus_map_navigator.js</div>
+              <div class="text-xs font-mono text-emerald-400/90">campus_map_navigator.js</div>
             </div>
             <div
-              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2025</span>
+              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span class="text-white text-xs font-medium"><i class="fas fa-calendar-alt mr-2 text-emerald-400"></i>2025</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
+          <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
             <div>
-              <div class="flex items-center space-x-2 mb-3 layer-z-30">
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">JS
-                  (ES6)</span>
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Leaflet
-                  Maps</span>
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">JavaScript</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">NSBM Map</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">NSBM Route Finder</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                An interactive map tool for freshmen. Integrates path routing to locate lecture complexes, student
-                lounges, and labs across the NSBM Green University.
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">NSBM Route Finder</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                An interactive map navigator for students and visitors. Integrates path routing to locate lecture complexes, student facilities, and computing labs across NSBM Green University Town.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6 preserve-3d">
-              <a href="https://github.com" id="project-btn-route-code" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-secondary flex-grow text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+            <div class="flex items-center space-x-3 pt-2">
+              <a href="https://github.com/JanudaPathirana" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-secondary flex-grow text-center py-2.5 text-xs font-semibold">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code Repository
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Project 5: CabFlow Rides -->
+        <!-- Project 5: CabFlow Rides Mobile -->
         <div
-          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card tilt-card overflow-hidden flex flex-col h-full border border-slate-200/60 dark:border-slate-800"
           data-category="mobile">
-          <div class="relative overflow-hidden group aspect-video bg-slate-900 layer-z-10">
+          <div class="relative overflow-hidden group aspect-video bg-slate-900">
             <img src="assets/project_taxi.png" alt="CabFlow Rides Mobile Application Mockup"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy">
             <div
-              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2026</span>
+              class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span class="text-white text-xs font-medium"><i class="fas fa-calendar-alt mr-2 text-emerald-400"></i>2026</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
+          <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
             <div>
-              <div class="flex items-center space-x-2 mb-3 layer-z-30">
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-orange-500/10 dark:bg-orange-400/5 text-orange-600 dark:text-orange-400 text-xs font-semibold uppercase tracking-wider">Flutter</span>
-                <span
-                  class="px-2.5 py-0.5 rounded-full bg-pink-500/10 dark:bg-pink-400/5 text-pink-600 dark:text-pink-400 text-xs font-semibold uppercase tracking-wider">Firebase</span>
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">Flutter</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">GPS / Firebase</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">CabFlow Rides</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                An on-demand ride-sharing mobile application. Features live GPS driver tracking, real-time fare
-                estimation, automated route matching, and secure Firebase-backed user authentication.
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">CabFlow Rides</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                An on-demand ride-sharing mobile application. Features live GPS driver tracking, real-time fare estimation, automated route matching, and secure Firebase-backed authentication.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6 preserve-3d">
-              <a href="https://github.com" id="project-btn-cabflow-code" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-secondary flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+            <div class="flex items-center space-x-3 pt-2">
+              <a href="https://github.com/JanudaPathirana" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-secondary flex-1 text-center py-2.5 text-xs font-semibold">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code
               </a>
-              <a href="https://example.com" id="project-btn-cabflow-demo" target="_blank" rel="noopener noreferrer"
-                class="btn-3d-primary flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
-                <i class="fas fa-external-link-alt mr-1.5"></i> App Store
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer"
+                class="btn-nsbm-primary flex-1 text-center py-2.5 text-xs font-semibold">
+                <i class="fas fa-external-link-alt mr-1.5 text-xs"></i> App Store
               </a>
             </div>
           </div>
@@ -756,202 +708,249 @@
     </div>
   </section>
 
-  <!-- Education & Experience Timeline Section -->
-  <section id="timeline" class="py-24 relative perspective-container">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+  <!-- Education Section -->
+  <section id="education" class="py-24 relative bg-slate-50/60 dark:bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
       <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2
-          class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
-          Education & Journey</h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">My timeline of studies and learning activities</p>
+        <h2 class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
+          Education & Journey
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-base sm:text-lg">
+          My academic studies, coursework, and intellectual development
+        </p>
       </div>
 
       <!-- Timeline Container -->
-      <div
-        class="relative border-l-2 border-slate-200 dark:border-slate-800 max-w-4xl mx-auto pl-8 sm:pl-10 space-y-12 preserve-3d">
+      <div class="relative border-l-2 border-emerald-500/30 dark:border-emerald-500/20 max-w-4xl mx-auto pl-8 sm:pl-10 space-y-12">
 
-        <!-- Timeline Item 1 -->
+        <!-- Timeline Item 1: NSBM Green University -->
         <div class="timeline-item relative">
           <!-- Marker Dot -->
-          <div
-            class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center">
-          </div>
+          <div class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-2 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-emerald-500 flex items-center justify-center"></div>
 
-          <div class="glass-card-3d glass-card-interactive tilt-card p-6 sm:p-8 rounded-2xl space-y-2">
-            <span
-              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase layer-z-20">
+          <div class="glass-card tilt-card p-6 sm:p-8 space-y-2">
+            <span class="inline-flex items-center px-3 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase">
               2024 - Present
             </span>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white layer-z-30">B.Sc. (Hons) in Software Engineering</h3>
-            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 layer-z-20">NSBM Green University Town, Sri Lanka
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">B.Sc. in Computer Science Undergraduate</h3>
+            <h4 class="text-sm font-semibold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
+              <i class="fas fa-university"></i> NSBM Green University Town, Sri Lanka
             </h4>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2 layer-z-10">
-              Developing a rigorous understanding of computer science principles, databases, OOP, data structures, and
-              architecture frameworks. Active student developer, achieving academic recognition with a GPA of 3.8/4.0.
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed pt-2">
+              Pursuing comprehensive computer science studies focusing on core algorithms, object-oriented programming, data structures, relational database management systems, system architecture, and discrete mathematics. Actively engaged in collaborative lab coursework and coding projects.
             </p>
           </div>
         </div>
 
-        <!-- Timeline Item 2 -->
+        <!-- Timeline Item 2: Advanced Level Examinations -->
         <div class="timeline-item relative">
-          <!-- Marker Dot -->
-          <div
-            class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center">
-          </div>
+          <div class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-2 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-emerald-500/50 flex items-center justify-center"></div>
 
-          <div class="glass-card-3d glass-card-interactive tilt-card p-6 sm:p-8 rounded-2xl space-y-2">
-            <span
-              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-violet-500/10 dark:bg-violet-400/5 text-violet-600 dark:text-violet-400 text-xs font-semibold uppercase layer-z-20">
+          <div class="glass-card tilt-card p-6 sm:p-8 space-y-2">
+            <span class="inline-flex items-center px-3 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold uppercase">
               2023
             </span>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white layer-z-30">G.C.E. Advanced Level Examinations</h3>
-            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 layer-z-20">Physical Science Stream</h4>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2 layer-z-10">
-              Studied Physics, Chemistry, and Combined Mathematics. Cultivated logical problem solving, algorithmic
-              reasoning, and scientific inquiry skills.
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">G.C.E. Advanced Level Examinations</h3>
+            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Physical Science Stream</h4>
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed pt-2">
+              Completed Advanced Level studies in Combined Mathematics, Physics, and Chemistry. Developed strong foundational mathematical problem solving, deductive reasoning, and analytical capability.
             </p>
           </div>
         </div>
 
-        <!-- Timeline Item 3 -->
+        <!-- Timeline Item 3: Continuous Learning -->
         <div class="timeline-item relative">
-          <!-- Marker Dot -->
-          <div
-            class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center">
-          </div>
+          <div class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-2 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-emerald-500/50 flex items-center justify-center"></div>
 
-          <div class="glass-card-3d glass-card-interactive tilt-card p-6 sm:p-8 rounded-2xl space-y-2">
-            <span
-              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-pink-500/10 dark:bg-pink-400/5 text-pink-600 dark:text-pink-400 text-xs font-semibold uppercase layer-z-20">
+          <div class="glass-card tilt-card p-6 sm:p-8 space-y-2">
+            <span class="inline-flex items-center px-3 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase">
               2022 - Present
             </span>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white layer-z-30">Self-Taught Development & Courses</h3>
-            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 layer-z-20">Global Tech Academies</h4>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2 layer-z-10">
-              Completed certifications in Responsive Web Design, JavaScript Algorithms, Python scripting, and Frontend
-              Development libraries to supplement academic tasks.
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Continuous Self-Taught Software Engineering</h3>
+            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Online Tech Academies & Developer Community</h4>
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed pt-2">
+              Supplementing university coursework through rigorous independent exploration of full-stack web development, Python scripting, Git workflow standards, and open-source software libraries.
             </p>
           </div>
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- Achievements and Experience Section -->
+  <section id="achievements" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
+          Achievements & Experience
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-base sm:text-lg">
+          Competitive programming experience and technical milestones
+        </p>
+      </div>
+
+      <!-- Achievement Highlight Card -->
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card tilt-card p-8 sm:p-10 border-2 border-emerald-500/30 relative overflow-hidden">
+          
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-slate-200 dark:border-slate-800">
+            <div class="flex items-center space-x-4">
+              <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl flex-shrink-0">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
+                  Global Competitive Programming Hackathon
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                  IEEE Xtreme 20.0 (2026)
+                </h3>
+              </div>
+            </div>
+
+            <div class="inline-flex items-center px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm font-bold">
+              <i class="fas fa-users mr-2"></i> Team XFORCE
+            </div>
+          </div>
+
+          <div class="pt-6 space-y-4">
+            <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200">
+              24-Hour Virtual Algorithmic Programming Challenge
+            </h4>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+              Participated as a key team member of <strong>Team XFORCE</strong> in <strong>IEEE Xtreme 20.0</strong>, the prestigious worldwide 24-hour competitive programming competition organized annually by the IEEE. Collaborated under real-time constraints to analyze algorithmic problems, devise efficient data structure architectures, optimize time complexity, and implement code solutions.
+            </p>
+
+            <div class="flex flex-wrap gap-2.5 pt-2">
+              <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold">Algorithms</span>
+              <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold">Data Structures</span>
+              <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold">Team Collaboration</span>
+              <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold">Problem Solving</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-24 relative bg-white/40 dark:bg-slate-900/30 backdrop-blur-md perspective-container">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+  <section id="contact" class="py-24 relative bg-slate-50/60 dark:bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      
+      <!-- Section Header -->
       <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2
-          class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
-          Get In Touch</h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">Send me a message or connect through other outlets
+        <h2 class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
+          Get In Touch
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-4 text-base sm:text-lg">
+          Have an inquiry, project idea, or discussion opportunity? Send me a message!
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 preserve-3d">
-        <!-- Contact Information Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+        <!-- Contact Information Cards (5 Cols) -->
         <div class="lg:col-span-5 space-y-6">
-          <h3 class="text-2xl font-bold mb-4">Let's build something together!</h3>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-            If you have an internship role, a freelance inquiry, or just want to chat about tech, please drop me a
-            message. I usually respond within 24 hours.
+          <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+            Let's build something exceptional!
+          </h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+            I am always eager to discuss software engineering, internship roles, web/mobile development projects, or algorithmic problems. Feel free to reach out directly through email or my social profiles.
           </p>
 
-          <div class="space-y-4 preserve-3d">
-            <!-- Contact Detail Card 1 -->
-            <div
-              class="glass-card-3d glass-card-interactive tilt-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
-              <div
-                class="w-12 h-12 rounded-xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-lg flex-shrink-0 layer-z-30">
+          <div class="space-y-4">
+            <!-- Email Card -->
+            <div class="glass-card tilt-card p-5 flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg flex-shrink-0">
                 <i class="fas fa-envelope"></i>
               </div>
-              <div class="layer-z-20">
-                <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Email Me</span>
+              <div class="overflow-hidden">
+                <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Email</span>
                 <a href="mailto:nethmirajanuda@gmail.com"
-                  class="text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">nethmirajanuda@gmail.com</a>
+                  class="text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors truncate block">
+                  nethmirajanuda@gmail.com
+                </a>
               </div>
             </div>
 
-            <!-- Contact Detail Card 2 -->
-            <div
-              class="glass-card-3d glass-card-interactive tilt-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
-              <div
-                class="w-12 h-12 rounded-xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-lg flex-shrink-0 layer-z-30">
+            <!-- LinkedIn Card -->
+            <div class="glass-card tilt-card p-5 flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg flex-shrink-0">
                 <i class="fab fa-linkedin-in"></i>
               </div>
-              <div class="layer-z-20">
-                <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">LinkedIn
-                  Profile</span>
+              <div class="overflow-hidden">
+                <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">LinkedIn</span>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                  class="text-sm font-medium hover:text-violet-500 dark:hover:text-violet-400 transition-colors">linkedin.com/in/januda-placeholder</a>
+                  class="text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors truncate block">
+                  linkedin.com/in/januda-placeholder
+                </a>
               </div>
             </div>
 
-            <!-- Contact Detail Card 3 -->
-            <div
-              class="glass-card-3d glass-card-interactive tilt-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
-              <div
-                class="w-12 h-12 rounded-xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-lg flex-shrink-0 layer-z-30">
+            <!-- GitHub Card -->
+            <div class="glass-card tilt-card p-5 flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg flex-shrink-0">
                 <i class="fab fa-github"></i>
               </div>
-              <div class="layer-z-20">
-                <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">GitHub Repo</span>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-                  class="text-sm font-medium hover:text-pink-500 dark:hover:text-pink-400 transition-colors">github.com/januda-placeholder</a>
+              <div class="overflow-hidden">
+                <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">GitHub</span>
+                <a href="https://github.com/JanudaPathirana" target="_blank" rel="noopener noreferrer"
+                  class="text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors truncate block">
+                  github.com/JanudaPathirana
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Contact Form Card (3D Tilt & Glassmorphic Depth) -->
+        <!-- Contact Form Card (7 Cols) -->
         <div class="lg:col-span-7">
-          <div class="glass-card-3d tilt-card p-8 sm:p-10 rounded-3xl border border-slate-200/50 dark:border-slate-800/50">
-            <form id="contact-form" class="space-y-6 preserve-3d" novalidate>
+          <div class="glass-card tilt-card p-6 sm:p-10">
+            <form id="contact-form" class="space-y-6" novalidate>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <!-- Name field -->
-                <div class="space-y-2 layer-z-20">
-                  <label for="form-name"
-                    class="block text-sm font-medium text-slate-700 dark:text-slate-300">Name</label>
-                  <input type="text" id="form-name" placeholder="John Doe"
-                    class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
+                <!-- Name Field -->
+                <div class="space-y-2">
+                  <label for="form-name" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Name</label>
+                  <input type="text" id="form-name" placeholder="Your Name"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm">
                   <span class="error-message text-xs text-red-500 hidden mt-1"></span>
                 </div>
 
-                <!-- Email field -->
-                <div class="space-y-2 layer-z-20">
-                  <label for="form-email" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Email
-                    Address</label>
-                  <input type="email" id="form-email" placeholder="john@example.com"
-                    class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
+                <!-- Email Field -->
+                <div class="space-y-2">
+                  <label for="form-email" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Email Address</label>
+                  <input type="email" id="form-email" placeholder="your.email@example.com"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm">
                   <span class="error-message text-xs text-red-500 hidden mt-1"></span>
                 </div>
               </div>
 
-              <!-- Subject field -->
-              <div class="space-y-2 layer-z-20">
-                <label for="form-subject"
-                  class="block text-sm font-medium text-slate-700 dark:text-slate-300">Subject</label>
+              <!-- Subject Field -->
+              <div class="space-y-2">
+                <label for="form-subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Subject</label>
                 <input type="text" id="form-subject" placeholder="Project Inquiry / Job Opportunity"
-                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm">
                 <span class="error-message text-xs text-red-500 hidden mt-1"></span>
               </div>
 
-              <!-- Message field -->
-              <div class="space-y-2 layer-z-20">
-                <label for="form-message"
-                  class="block text-sm font-medium text-slate-700 dark:text-slate-300">Message</label>
-                <textarea id="form-message" rows="5" placeholder="Hi Januda, I'd like to talk about..."
-                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm resize-none"></textarea>
+              <!-- Message Field -->
+              <div class="space-y-2">
+                <label for="form-message" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Message</label>
+                <textarea id="form-message" rows="5" placeholder="Hi Januda, I would like to talk about..."
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-sm resize-none"></textarea>
                 <span class="error-message text-xs text-red-500 hidden mt-1"></span>
               </div>
 
-              <!-- 3D Submit Button -->
+              <!-- Submit Button -->
               <button type="submit" id="form-submit-btn"
-                class="btn-3d-primary w-full py-4 px-6 rounded-xl bg-cyan-500 text-white font-semibold hover:bg-cyan-600 transition-all text-center focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
-                <span class="inline-flex items-center justify-center layer-z-20">
-                  Send Message <i class="fas fa-paper-plane ml-2 text-xs"></i>
-                </span>
+                class="btn-nsbm-primary w-full py-4 px-6 text-sm sm:text-base font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+                Send Message <i class="fas fa-paper-plane ml-2 text-xs"></i>
               </button>
             </form>
           </div>
@@ -961,36 +960,38 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 relative z-10">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+  <footer class="bg-slate-900 dark:bg-[#060a08] text-slate-400 py-12 border-t border-slate-800 dark:border-emerald-950/40 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="text-center md:text-left">
         <a href="#home" id="footer-logo"
-          class="text-xl font-extrabold tracking-wider text-gradient-animate focus:outline-none">
-          JANUDA<span class="text-cyan-500">.DEV</span>
+          class="text-xl font-extrabold tracking-wider text-gradient-nsbm focus:outline-none">
+          JANUDA<span class="text-emerald-500">.DEV</span>
         </a>
-        <p class="text-xs text-slate-500 mt-2">Software Engineering student at NSBM, Sri Lanka.</p>
+        <p class="text-xs text-slate-500 mt-1">
+          Computer Science Undergraduate • NSBM Green University, Sri Lanka
+        </p>
       </div>
 
       <!-- Socials -->
       <div class="flex items-center space-x-6">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Account"
-          class="hover:text-cyan-400 hover:scale-110 transition-all text-lg"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/JanudaPathirana" target="_blank" rel="noopener noreferrer" aria-label="GitHub Account"
+          class="hover:text-emerald-400 transition-colors text-lg"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
-          class="hover:text-cyan-400 hover:scale-110 transition-all text-lg"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:januda@placeholder.com" aria-label="Email Me"
-          class="hover:text-cyan-400 hover:scale-110 transition-all text-lg"><i class="fas fa-envelope"></i></a>
+          class="hover:text-emerald-400 transition-colors text-lg"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:nethmirajanuda@gmail.com" aria-label="Email Me"
+          class="hover:text-emerald-400 transition-colors text-lg"><i class="fas fa-envelope"></i></a>
       </div>
 
       <div class="text-xs text-slate-500 text-center md:text-right">
-        <p>© 2026 Januda. All rights reserved.</p>
-        <p class="mt-1">Designed & Coded with passion.</p>
+        <p>© 2026 Januda Pathirana. All rights reserved.</p>
+        <p class="mt-0.5 text-slate-600">Designed & Built with NSBM Green Identity.</p>
       </div>
     </div>
   </footer>
 
   <!-- Back To Top Button -->
   <button id="back-to-top" type="button" aria-label="Scroll Back to Top"
-    class="btn-3d-primary fixed bottom-6 right-6 p-3.5 rounded-full bg-cyan-500 text-white shadow-lg opacity-0 pointer-events-none translate-y-10 hover:bg-cyan-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 z-50">
+    class="btn-nsbm-primary fixed bottom-6 right-6 p-3.5 rounded-full shadow-lg opacity-0 pointer-events-none translate-y-8 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 z-50">
     <i class="fas fa-chevron-up"></i>
   </button>
 
