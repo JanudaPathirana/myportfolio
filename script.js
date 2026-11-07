@@ -39,7 +39,7 @@ function initTheme() {
   themeToggleBtn.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark');
     const isDark = document.documentElement.classList.contains('dark');
-    
+
     if (isDark) {
       themeToggleLightIcon?.classList.remove('hidden');
       themeToggleDarkIcon?.classList.add('hidden');
@@ -71,7 +71,7 @@ function initScrollEffects() {
 
   function onScroll() {
     const scrollY = window.scrollY;
-    
+
     // 1. Header background elevation
     if (header) {
       if (scrollY > 40) {
@@ -104,7 +104,7 @@ function initScrollEffects() {
       const sectionHeight = current.offsetHeight;
       const sectionTop = current.offsetTop - 120;
       const sectionId = current.getAttribute('id');
-      
+
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         navLinks.forEach(link => {
           link.classList.remove('text-emerald-600', 'dark:text-emerald-400', 'font-semibold', 'active-nav');
@@ -177,7 +177,7 @@ function initTypingEffect() {
     'Python & Backend Developer',
     'Algorithmic Problem Solver'
   ];
-  
+
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -185,7 +185,7 @@ function initTypingEffect() {
 
   function type() {
     const currentWord = words[wordIndex];
-    
+
     if (isDeleting) {
       typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
@@ -226,7 +226,7 @@ function initProjectFilters() {
         b.classList.remove('bg-emerald-600', 'text-white', 'shadow-lg', 'shadow-emerald-600/30');
         b.classList.add('bg-slate-100', 'text-slate-600', 'dark:bg-slate-800', 'dark:text-slate-300');
       });
-      
+
       btn.classList.remove('bg-slate-100', 'text-slate-600', 'dark:bg-slate-800', 'dark:text-slate-300');
       btn.classList.add('bg-emerald-600', 'text-white', 'shadow-lg', 'shadow-emerald-600/30');
 
@@ -234,7 +234,7 @@ function initProjectFilters() {
 
       projectCards.forEach(card => {
         const categories = (card.getAttribute('data-category') || '').split(' ');
-        
+
         if (filterValue === 'all' || categories.includes(filterValue)) {
           card.classList.remove('hidden');
           card.style.display = 'flex';
@@ -299,7 +299,7 @@ function init3DTilt() {
 
       rAF = requestAnimationFrame(() => {
         card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.02)`;
-        
+
         if (glare) {
           glare.style.background = `radial-gradient(circle at ${xNorm * 100}% ${yNorm * 100}%, rgba(16, 185, 129, 0.2) 0%, transparent 65%)`;
           glare.style.opacity = '1';
@@ -313,7 +313,7 @@ function init3DTilt() {
 
       card.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-      
+
       if (glare) {
         glare.style.opacity = '0';
       }
@@ -484,7 +484,7 @@ function initContactForm() {
     if (isValid) {
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
-      
+
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending Message...';
 
@@ -503,7 +503,7 @@ function initContactForm() {
 function setInputError(input, message) {
   input.classList.add('border-red-500', 'focus:border-red-500');
   input.classList.remove('border-slate-200', 'dark:border-slate-700', 'focus:border-emerald-500');
-  
+
   const helperText = input.nextElementSibling;
   if (helperText && helperText.classList.contains('error-message')) {
     helperText.textContent = message;
@@ -514,7 +514,7 @@ function setInputError(input, message) {
 function resetInputValidation(input) {
   input.classList.remove('border-red-500', 'focus:border-red-500');
   input.classList.add('border-slate-200', 'dark:border-slate-700', 'focus:border-emerald-500');
-  
+
   const helperText = input.nextElementSibling;
   if (helperText && helperText.classList.contains('error-message')) {
     helperText.classList.add('hidden');
@@ -527,7 +527,7 @@ function resetInputValidation(input) {
    ========================================== */
 function showToast(message, type = 'success') {
   let toastContainer = document.getElementById('toast-container');
-  
+
   if (!toastContainer) {
     toastContainer = document.createElement('div');
     toastContainer.id = 'toast-container';
@@ -536,7 +536,7 @@ function showToast(message, type = 'success') {
 
   const toast = document.createElement('div');
   toast.className = 'toast';
-  
+
   let iconClass = 'fas fa-check-circle text-emerald-500';
   if (type === 'error') {
     iconClass = 'fas fa-exclamation-circle text-red-500';
