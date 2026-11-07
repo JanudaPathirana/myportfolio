@@ -3,168 +3,509 @@
 :root {
   --font-sans: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
-  /* Color theme tokens (custom utilities to overlay with Tailwind) */
-  --glow-cyan: rgba(6, 182, 212, 0.15);
-  --glow-violet: rgba(139, 92, 246, 0.15);
-  --glass-bg-light: rgba(255, 255, 255, 0.45);
-  --glass-bg-dark: rgba(17, 24, 39, 0.45);
-  --glass-border-light: rgba(255, 255, 255, 0.4);
-  --glass-border-dark: rgba(255, 255, 255, 0.05);
+
+  /* Color theme tokens */
+  --glow-cyan: rgba(6, 182, 212, 0.25);
+  --glow-violet: rgba(139, 92, 246, 0.25);
+  --glow-pink: rgba(236, 72, 153, 0.25);
+  --glow-emerald: rgba(16, 185, 129, 0.25);
+
+  /* Light mode glass tokens */
+  --glass-bg-light: rgba(255, 255, 255, 0.65);
+  --glass-border-light: rgba(255, 255, 255, 0.7);
+  --glass-shadow-light: 0 10px 30px -10px rgba(15, 23, 42, 0.08),
+                        0 20px 40px -15px rgba(6, 182, 212, 0.08),
+                        inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+
+  /* Dark mode glass tokens */
+  --glass-bg-dark: rgba(13, 19, 33, 0.65);
+  --glass-border-dark: rgba(255, 255, 255, 0.08);
+  --glass-shadow-dark: 0 14px 35px -10px rgba(0, 0, 0, 0.65),
+                       0 25px 50px -15px rgba(6, 182, 212, 0.18),
+                       inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 * {
   font-family: var(--font-sans);
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 code, pre, .mono-font {
   font-family: var(--font-mono) !important;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-.dark ::-webkit-scrollbar-track {
-  background: #090d16;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 9999px;
-  border: 3px solid #f8fafc;
-}
-.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border: 3px solid #090d16;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+/* ==========================================
+   1. 3D PERSPECTIVE & TRANSFORMS CORE
+   ========================================== */
+.perspective-container {
+  perspective: 1200px;
 }
 
-/* Scroll Progress Bar */
-#scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 4px;
-  background: linear-gradient(to right, #06b6d4, #8b5cf6, #ec4899);
-  width: 0%;
-  z-index: 100;
-  transition: width 0.1s ease-out;
+.perspective-1000 {
+  perspective: 1000px;
 }
 
-/* Custom Glassmorphism styles */
+.preserve-3d {
+  transform-style: preserve-3d !important;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* 3D Physical Depth Layers for Elements inside Cards */
+.layer-z-10 {
+  transform: translateZ(10px);
+  transition: transform 0.3s ease;
+}
+
+.layer-z-20 {
+  transform: translateZ(20px);
+  transition: transform 0.3s ease;
+}
+
+.layer-z-30 {
+  transform: translateZ(30px);
+  transition: transform 0.3s ease;
+}
+
+.layer-z-40 {
+  transform: translateZ(40px);
+  transition: transform 0.3s ease;
+}
+
+.layer-z-50 {
+  transform: translateZ(50px);
+  transition: transform 0.3s ease;
+}
+
+/* ==========================================
+   2. GLASSMORPHISM & LIGHTING
+   ========================================= */
 .glass-nav {
   background-color: rgba(248, 250, 252, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
 }
 
 .dark .glass-nav {
-  background-color: rgba(9, 13, 22, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(9, 13, 22, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.5);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.7);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-light);
+  position: relative;
 }
 
 .dark .glass-card {
-  background: rgba(17, 24, 39, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: var(--glass-shadow-dark);
+}
+
+/* 3D Glass Card */
+.glass-card-3d {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-light);
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.4s ease;
+}
+
+.dark .glass-card-3d {
+  background: var(--glass-bg-dark);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: var(--glass-shadow-dark);
 }
 
 .glass-card-interactive {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.4s ease;
 }
 
 .glass-card-interactive:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.08);
-  border-color: rgba(6, 182, 212, 0.4);
+  border-color: rgba(6, 182, 212, 0.55);
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.12),
+              0 25px 60px -15px rgba(6, 182, 212, 0.2),
+              0 0 25px -4px rgba(6, 182, 212, 0.35),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .dark .glass-card-interactive:hover {
-  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.55);
-  border-color: rgba(139, 92, 246, 0.3);
+  border-color: rgba(6, 182, 212, 0.55);
+  box-shadow: 0 25px 55px -12px rgba(0, 0, 0, 0.85),
+              0 30px 70px -20px rgba(6, 182, 212, 0.35),
+              0 0 35px -5px rgba(139, 92, 246, 0.3),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-/* Animations */
-@keyframes float {
+/* ==========================================
+   3. INTERACTIVE 3D TILT & SPECULAR GLARE
+   ========================================== */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+  z-index: 30;
+}
+
+.tilt-card:hover .tilt-glare {
+  opacity: 1;
+}
+
+/* ==========================================
+   4. 3D TACTILE BUTTONS
+   ========================================== */
+.btn-3d-primary {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 24px -6px rgba(6, 182, 212, 0.45),
+              0 4px 8px -2px rgba(6, 182, 212, 0.25);
+}
+
+.btn-3d-primary:hover {
+  transform: translateY(-4px) translateZ(12px) scale(1.02);
+  box-shadow: 0 18px 36px -6px rgba(6, 182, 212, 0.6),
+              0 8px 16px -2px rgba(6, 182, 212, 0.35),
+              0 0 20px 2px rgba(6, 182, 212, 0.4);
+}
+
+.btn-3d-primary:active {
+  transform: translateY(1px) translateZ(2px) scale(0.98);
+  box-shadow: 0 4px 12px -2px rgba(6, 182, 212, 0.4);
+}
+
+.btn-3d-secondary {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-3d-secondary:hover {
+  transform: translateY(-4px) translateZ(10px) scale(1.02);
+  box-shadow: 0 14px 28px -6px rgba(15, 23, 42, 0.12),
+              0 0 20px rgba(6, 182, 212, 0.25);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.dark .btn-3d-secondary:hover {
+  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.7),
+              0 0 25px rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+.btn-3d-secondary:active {
+  transform: translateY(1px) translateZ(2px) scale(0.98);
+}
+
+/* ==========================================
+   5. FLOATING & ANTI-GRAVITY ANIMATIONS
+   ========================================== */
+@keyframes anti-gravity-float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-12px) translateX(4px) rotateX(2deg) rotateY(-2deg);
   }
   50% {
-    transform: translateY(-15px) rotate(3deg);
+    transform: translateY(-18px) translateX(0px) rotateX(0deg) rotateY(3deg);
+  }
+  75% {
+    transform: translateY(-8px) translateX(-4px) rotateX(-2deg) rotateY(1deg);
   }
 }
 
-@keyframes float-reverse {
+@keyframes float-badge-1 {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateZ(50px) translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(15px) rotate(-3deg);
+    transform: translateZ(55px) translateY(-14px) rotate(3deg);
   }
 }
 
-@keyframes pulse-glow {
+@keyframes float-badge-2 {
   0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
+    transform: translateZ(60px) translateY(0px) rotate(0deg);
   }
   50% {
-    opacity: 0.8;
-    transform: scale(1.05);
+    transform: translateZ(65px) translateY(14px) rotate(-3deg);
   }
 }
 
-.animate-float-1 {
-  animation: float 6s ease-in-out infinite;
+@keyframes float-badge-3 {
+  0%, 100% {
+    transform: translateZ(45px) translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateZ(50px) translateY(-10px) scale(1.04);
+  }
 }
 
-.animate-float-2 {
-  animation: float-reverse 8s ease-in-out infinite;
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -25px, 0) scale(1.05);
+  }
 }
 
-.animate-glow-1 {
-  animation: pulse-glow 8s ease-in-out infinite;
+@keyframes float-reverse-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 25px, 0) scale(0.96);
+  }
 }
 
-.animate-glow-2 {
-  animation: pulse-glow 10s ease-in-out infinite 2s;
+@keyframes pulse-halo {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
 }
 
-/* Glowing Backdrops */
-.glow-blur-cyan {
-  background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%);
+@keyframes orbit-rotate-3d {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.glow-blur-violet {
-  background: radial-gradient(circle, var(--glow-violet) 0%, transparent 70%);
+@keyframes orbit-counter-rotate-3d {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-/* Animated gradient text */
+.animate-anti-gravity {
+  animation: anti-gravity-float 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.animate-float-badge-1 {
+  animation: float-badge-1 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.animate-float-badge-2 {
+  animation: float-badge-2 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite -2s;
+}
+
+.animate-float-badge-3 {
+  animation: float-badge-3 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite -4s;
+}
+
+.animate-pulse-halo {
+  animation: pulse-halo 6s ease-in-out infinite;
+}
+
+.animate-orbit-slow {
+  animation: orbit-rotate-3d 60s linear infinite;
+}
+
+.animate-orbit-counter {
+  animation: orbit-counter-rotate-3d 45s linear infinite;
+}
+
+/* ==========================================
+   6. HERO AVATAR 3D SHOWCASE SYSTEM
+   ========================================== */
+.hero-tilt-wrapper {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.hero-avatar-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-avatar-frame {
+  position: absolute;
+  inset: 16px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.4),
+              0 0 40px -5px rgba(6, 182, 212, 0.5),
+              inset 0 0 30px rgba(0, 0, 0, 0.3);
+  transform: translateZ(25px);
+  background-color: #0b1120;
+}
+
+.dark .hero-avatar-frame {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.8),
+              0 0 45px -5px rgba(6, 182, 212, 0.6),
+              inset 0 0 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Perfect alignment for portrait photo in circular avatar */
+.hero-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 14%;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: block;
+}
+
+.hero-avatar-card:hover .hero-avatar-img {
+  transform: scale(1.06);
+}
+
+/* Floating 3D Tech Chips around Januda */
+.floating-chip {
+  position: absolute;
+  z-index: 40;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.15),
+              0 0 15px rgba(6, 182, 212, 0.2);
+  border-radius: 9999px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #0f172a;
+  pointer-events: auto;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .floating-chip {
+  background: rgba(13, 19, 33, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  box-shadow: 0 15px 35px -6px rgba(0, 0, 0, 0.65),
+              0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.floating-chip:hover {
+  transform: translateZ(75px) scale(1.08) !important;
+  box-shadow: 0 20px 40px -6px rgba(6, 182, 212, 0.45);
+}
+
+/* ==========================================
+   7. SMOOTH PARALLAX SCROLLING BACKGROUND
+   ========================================== */
+.parallax-bg-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.parallax-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.parallax-orb-cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.22) 0%, transparent 70%);
+}
+
+.parallax-orb-violet {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+}
+
+.parallax-orb-pink {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.18) 0%, transparent 70%);
+}
+
+.dark .parallax-orb-cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.28) 0%, transparent 70%);
+}
+
+.dark .parallax-orb-violet {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.24) 0%, transparent 70%);
+}
+
+.dark .parallax-orb-pink {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
+}
+
+/* Subtle 3D Depth Grid */
+.bg-perspective-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(203, 213, 225, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 213, 225, 0.18) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+.dark .bg-perspective-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+/* ==========================================
+   8. ANIMATED GRADIENTS & TYPOGRAPHY
+   ========================================== */
 .text-gradient-animate {
-  background: linear-gradient(to right, #06b6d4, #8b5cf6, #ec4899, #06b6d4);
-  background-size: 300% auto;
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -183,7 +524,18 @@ code, pre, .mono-font {
   }
 }
 
-/* Typing Effect cursor */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 54px;
+  height: 4px;
+  background: linear-gradient(to right, #06b6d4, #8b5cf6);
+  border-radius: 9999px;
+  margin-top: 10px;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+}
+
+/* Typing cursor */
 .typing-cursor::after {
   content: '|';
   animation: blink 0.8s step-end infinite;
@@ -201,9 +553,12 @@ code, pre, .mono-font {
   50% { opacity: 0; }
 }
 
-/* Project Cards Dynamic Filters */
+/* ==========================================
+   9. PROJECT CARDS FILTERING & 3D HOVER
+   ========================================== */
 .project-card {
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.4s ease;
+  transform-style: preserve-3d;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
 }
 
 .project-card.hidden {
@@ -219,34 +574,86 @@ code, pre, .mono-font {
   border-width: 0 !important;
 }
 
-/* Timeline Custom Styles */
+/* ==========================================
+   10. TIMELINE 3D ENHANCEMENTS
+   ========================================== */
 .timeline-dot::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #06b6d4;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
   transition: all 0.3s ease;
 }
 
 .dark .timeline-dot::before {
   background-color: #a78bfa;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.7);
 }
 
 .timeline-item:hover .timeline-dot::before {
-  box-shadow: 0 0 15px 4px rgba(6, 182, 212, 0.5);
-  transform: translate(-50%, -50%) scale(1.3);
+  box-shadow: 0 0 20px 6px rgba(6, 182, 212, 0.65);
+  transform: translate(-50%, -50%) scale(1.4);
 }
 
 .dark .timeline-item:hover .timeline-dot::before {
-  box-shadow: 0 0 15px 4px rgba(167, 139, 250, 0.5);
+  box-shadow: 0 0 22px 6px rgba(167, 139, 250, 0.75);
 }
 
-/* Toast Notification style */
+/* ==========================================
+   11. SCROLL PROGRESS & CUSTOM SCROLLBAR
+   ========================================== */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(to right, #06b6d4, #8b5cf6, #ec4899);
+  width: 0%;
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  transition: width 0.1s ease-out;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 3px solid #f8fafc;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border: 3px solid #090d16;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ==========================================
+   12. TOAST NOTIFICATIONS
+   ========================================== */
 #toast-container {
   position: fixed;
   bottom: 24px;
@@ -259,15 +666,17 @@ code, pre, .mono-font {
 
 .toast {
   background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(226, 232, 240, 0.8);
   padding: 16px 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1),
+              0 0 20px rgba(6, 182, 212, 0.15);
   display: flex;
   align-items: center;
   gap: 12px;
-  transform: translateY(50px);
+  transform: translateY(50px) scale(0.9);
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -275,21 +684,26 @@ code, pre, .mono-font {
 .dark .toast {
   background: rgba(17, 24, 39, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(6, 182, 212, 0.2);
 }
 
 .toast.show {
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   opacity: 1;
 }
 
-/* Section Header styling */
-.section-title::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 4px;
-  background: linear-gradient(to right, #06b6d4, #8b5cf6);
-  border-radius: 2px;
-  margin-top: 8px;
+/* ==========================================
+   13. REDUCED MOTION ACCESSIBILITY
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .tilt-card {
+    transform: none !important;
+  }
 }

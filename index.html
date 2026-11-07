@@ -37,15 +37,26 @@
   <!-- Google Fonts & FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Custom Stylesheet -->
+  <!-- Custom Stylesheet with 3D Transforms & Glassmorphism -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Custom JavaScript -->
+  <!-- Custom JavaScript with 3D Tilt, Parallax & Interactive Engines -->
   <script src="script.js" defer></script>
 </head>
 
 <body
-  class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased overflow-x-hidden">
+  class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased overflow-x-hidden relative">
+
+  <!-- Fixed Smooth Parallax 3D Background Layer -->
+  <div class="parallax-bg-layer" aria-hidden="true">
+    <div class="bg-perspective-grid"></div>
+    <!-- Parallax Glowing Ambient Nebula Orbs at Varying Z-Depth Rates -->
+    <div class="parallax-orb parallax-orb-cyan w-[550px] h-[550px] top-[-100px] left-[-150px]" data-parallax-speed="0.18"></div>
+    <div class="parallax-orb parallax-orb-violet w-[600px] h-[600px] top-[750px] right-[-180px]" data-parallax-speed="-0.22"></div>
+    <div class="parallax-orb parallax-orb-pink w-[480px] h-[480px] top-[1700px] left-[5%]" data-parallax-speed="0.25"></div>
+    <div class="parallax-orb parallax-orb-cyan w-[620px] h-[620px] top-[2600px] right-[4%]" data-parallax-speed="-0.16"></div>
+    <div class="parallax-orb parallax-orb-violet w-[520px] h-[520px] top-[3600px] left-[-80px]" data-parallax-speed="0.2"></div>
+  </div>
 
   <!-- Scroll Progress Indicator -->
   <div id="scroll-progress"></div>
@@ -55,7 +66,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
       <!-- Logo -->
       <a href="#home" id="nav-logo"
-        class="text-2xl font-extrabold tracking-wider text-gradient-animate focus:outline-none">
+        class="text-2xl font-extrabold tracking-wider text-gradient-animate focus:outline-none transition-transform hover:scale-105">
         JANUDA<span class="text-cyan-500">.DEV</span>
       </a>
 
@@ -79,7 +90,7 @@
       <div class="flex items-center space-x-4">
         <!-- Dark Mode Toggle Button -->
         <button id="theme-toggle" type="button" aria-label="Toggle Dark Mode"
-          class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
+          class="btn-3d-secondary p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500">
           <i id="theme-toggle-dark-icon" class="fas fa-moon text-lg"></i>
           <i id="theme-toggle-light-icon" class="fas fa-sun text-lg hidden text-amber-400"></i>
         </button>
@@ -124,79 +135,106 @@
   </div>
 
   <!-- Hero Section -->
-  <section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden">
-    <!-- Glowing background decorative items -->
-    <div
-      class="absolute top-1/4 left-1/10 w-96 h-96 glow-blur-cyan rounded-full filter blur-3xl opacity-50 dark:opacity-30 animate-glow-1">
-    </div>
-    <div
-      class="absolute bottom-1/4 right-1/10 w-96 h-96 glow-blur-violet rounded-full filter blur-3xl opacity-50 dark:opacity-30 animate-glow-2">
-    </div>
-
+  <section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden perspective-container">
     <div
       class="max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 w-full">
-      <!-- Intro text -->
-      <div class="order-2 md:order-1 space-y-6 text-center md:text-left">
+      <!-- Intro text (3D Depth Preserved) -->
+      <div class="order-2 md:order-1 space-y-6 text-center md:text-left preserve-3d">
         <div
-          class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 dark:border-cyan-400/10 text-xs font-semibold uppercase tracking-wider mx-auto md:mx-0">
+          class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 dark:border-cyan-400/10 text-xs font-semibold uppercase tracking-wider mx-auto md:mx-0 shadow-sm layer-z-20">
           <span class="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
           <span>Open for Opportunities</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight layer-z-30">
           Hi, I am <br>
           <span class="text-gradient-animate font-extrabold">Januda</span>
         </h1>
 
         <!-- Typewriter Container -->
-        <div class="h-8 flex justify-center md:justify-start items-center">
+        <div class="h-8 flex justify-center md:justify-start items-center layer-z-20">
           <span id="typing-text"
             class="typing-cursor text-xl sm:text-2xl font-mono text-cyan-600 dark:text-cyan-400 font-semibold"></span>
         </div>
 
-        <p class="text-slate-600 dark:text-slate-400 max-w-lg text-lg mx-auto md:mx-0">
+        <p class="text-slate-600 dark:text-slate-400 max-w-lg text-lg mx-auto md:mx-0 leading-relaxed layer-z-10">
           Software engineering undergraduate student at NSBM Green University Town, Sri Lanka. I build clean, efficient,
           and beautifully designed web and mobile experiences.
         </p>
 
-        <!-- Action Buttons -->
-        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+        <!-- 3D Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4 preserve-3d">
           <a href="#contact" id="hero-btn-connect"
-            class="px-8 py-3.5 rounded-2xl bg-cyan-500 text-white font-medium hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-center focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
-            Let's Connect <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            class="btn-3d-primary px-8 py-3.5 rounded-2xl bg-cyan-500 text-white font-medium text-center focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
+            <span class="inline-flex items-center layer-z-20">
+              Let's Connect <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </span>
           </a>
           <a href="#projects" id="hero-btn-projects"
-            class="px-8 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-900 transition-all text-center focus:outline-none focus:ring-2 focus:ring-cyan-500">
-            View Work
+            class="btn-3d-secondary px-8 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-900 transition-all text-center focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            <span class="inline-flex items-center layer-z-20">View Work</span>
           </a>
         </div>
       </div>
 
-      <!-- Avatar Showcase -->
-      <div class="order-1 md:order-2 flex justify-center items-center">
-        <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
-          <!-- Outer rotating decoration -->
+      <!-- Avatar Showcase (3D Depth, Orbit Rings & Floating Anti-Gravity Chips) -->
+      <div class="order-1 md:order-2 flex justify-center items-center hero-tilt-wrapper">
+        <div class="hero-avatar-card relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center">
+          
+          <!-- Outer 3D Orbit Ring (Dashed Cyan with rotating satellite node) -->
           <div
-            class="absolute inset-0 rounded-full border border-dashed border-cyan-500/40 dark:border-cyan-400/20 animate-[spin_60s_linear_infinite]">
+            class="absolute inset-0 rounded-full border border-dashed border-cyan-500/40 dark:border-cyan-400/30 animate-orbit-slow pointer-events-none">
+            <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_12px_#22d3ee]"></div>
           </div>
-          <!-- Outer pulse background -->
+
+          <!-- Secondary Counter Orbit Ring (Violet) -->
           <div
-            class="absolute inset-4 rounded-full bg-gradient-to-tr from-cyan-500 to-violet-500 opacity-20 filter blur-xl animate-pulse">
+            class="absolute inset-2 rounded-full border border-dotted border-violet-500/30 dark:border-violet-400/20 animate-orbit-counter pointer-events-none">
+            <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-violet-400 shadow-[0_0_10px_#a78bfa]"></div>
           </div>
-          <!-- Image container -->
+
+          <!-- Glowing 3D Pulse Aura -->
           <div
-            class="absolute inset-4 rounded-full overflow-hidden border-2 border-white dark:border-slate-800 shadow-2xl animate-float-1">
-            <img src="assets/avatar.png" alt="Januda Professional Avatar Illustration"
-              class="w-full h-full object-cover">
+            class="absolute inset-4 rounded-full bg-gradient-to-tr from-cyan-500/30 via-violet-500/20 to-pink-500/30 filter blur-2xl animate-pulse-halo pointer-events-none">
           </div>
+
+          <!-- Main Circular Avatar Frame (3D Depth Preserved & Framed Portrait) -->
+          <div class="hero-avatar-frame animate-anti-gravity">
+            <img src="assets/avatar.png" alt="Januda - Software Engineering Undergraduate"
+              class="hero-avatar-img"
+              loading="eager"
+              onerror="this.onerror=null; this.src='assets/avatar.jpg';">
+            <!-- Dynamic glass surface reflection overlay -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none"></div>
+          </div>
+
+          <!-- Floating Anti-Gravity 3D Tech Chips -->
+          <!-- Chip 1: Full-Stack Dev (Top-Right) -->
+          <div class="floating-chip -top-3 -right-2 sm:top-2 sm:-right-4 animate-float-badge-1" style="transform: translateZ(55px);">
+            <i class="fab fa-react text-cyan-500 dark:text-cyan-400 text-base"></i>
+            <span>Full-Stack Dev</span>
+          </div>
+
+          <!-- Chip 2: Python & Backend (Bottom-Left) -->
+          <div class="floating-chip -bottom-3 -left-2 sm:bottom-4 sm:-left-6 animate-float-badge-2" style="transform: translateZ(65px);">
+            <i class="fab fa-python text-amber-500 dark:text-amber-400 text-base"></i>
+            <span>Python & Backend</span>
+          </div>
+
+          <!-- Chip 3: NSBM Undergraduate (Bottom-Right) -->
+          <div class="floating-chip -bottom-4 right-4 sm:-bottom-2 sm:right-6 animate-float-badge-3" style="transform: translateZ(50px);">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-ping"></span>
+            <span>NSBM Student</span>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-24 relative bg-white/50 dark:bg-slate-900/30">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
+  <section id="about" class="py-24 relative bg-white/40 dark:bg-slate-900/30 backdrop-blur-md perspective-container">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-16">
         <h2
           class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
@@ -244,42 +282,46 @@
           </div>
         </div>
 
-        <!-- Academic highlights statistics -->
-        <div class="lg:col-span-5 grid grid-cols-2 gap-6">
-          <div class="glass-card glass-card-interactive p-6 rounded-2xl text-center">
+        <!-- Academic highlights 3D statistics cards -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-6 preserve-3d">
+          <!-- Stat 1 -->
+          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
             <div
-              class="w-12 h-12 rounded-xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-xl mx-auto mb-4">
+              class="w-12 h-12 rounded-xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
               <i class="fas fa-star"></i>
             </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white">3.8</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">GPA Score</span>
+            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">3.8</span>
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">GPA Score</span>
           </div>
 
-          <div class="glass-card glass-card-interactive p-6 rounded-2xl text-center">
+          <!-- Stat 2 -->
+          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
             <div
-              class="w-12 h-12 rounded-xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-xl mx-auto mb-4">
+              class="w-12 h-12 rounded-xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
               <i class="fas fa-code-branch"></i>
             </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white">12+</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Completed Projects</span>
+            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">12+</span>
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">Completed Projects</span>
           </div>
 
-          <div class="glass-card glass-card-interactive p-6 rounded-2xl text-center">
+          <!-- Stat 3 -->
+          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
             <div
-              class="w-12 h-12 rounded-xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-xl mx-auto mb-4">
+              class="w-12 h-12 rounded-xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
               <i class="fas fa-clock"></i>
             </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white">1k+</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Coding Hours</span>
+            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">1k+</span>
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">Coding Hours</span>
           </div>
 
-          <div class="glass-card glass-card-interactive p-6 rounded-2xl text-center">
+          <!-- Stat 4 -->
+          <div class="glass-card-3d glass-card-interactive tilt-card p-6 rounded-2xl text-center">
             <div
-              class="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-500 flex items-center justify-center text-xl mx-auto mb-4">
+              class="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-500 flex items-center justify-center text-xl mx-auto mb-4 layer-z-30">
               <i class="fas fa-award"></i>
             </div>
-            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white">5+</span>
-            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block">Certificates</span>
+            <span class="block text-3xl font-extrabold text-slate-900 dark:text-white layer-z-20">5+</span>
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 block layer-z-10">Certificates</span>
           </div>
         </div>
       </div>
@@ -287,8 +329,8 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="py-24 relative">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
+  <section id="skills" class="py-24 relative perspective-container">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-16">
         <h2
           class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
@@ -296,19 +338,19 @@
         <p class="text-slate-600 dark:text-slate-400 mt-4 text-lg">My engineering toolbox categorized by domain</p>
       </div>
 
-      <!-- Skills Category Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Skills Category Grid (3D Depth & Tilt Cards) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 preserve-3d">
 
         <!-- Category 1: Languages -->
-        <div class="glass-card glass-card-interactive p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4">
+        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
+          <div class="flex items-center space-x-4 layer-z-30">
             <div
               class="w-12 h-12 rounded-2xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-xl">
               <i class="fas fa-code"></i>
             </div>
             <h3 class="text-xl font-bold">Languages</h3>
           </div>
-          <div class="space-y-4 pt-2">
+          <div class="space-y-4 pt-2 layer-z-20">
             <!-- Skill Item -->
             <div>
               <div class="flex justify-between text-sm font-medium mb-1">
@@ -316,7 +358,7 @@
                 <span class="text-slate-500 dark:text-slate-400">85%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full" style="width: 85%"></div>
+                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 85%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -326,7 +368,7 @@
                 <span class="text-slate-500 dark:text-slate-400">80%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full" style="width: 80%"></div>
+                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 80%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -336,7 +378,7 @@
                 <span class="text-slate-500 dark:text-slate-400">75%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full" style="width: 75%"></div>
+                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 75%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -346,22 +388,22 @@
                 <span class="text-slate-500 dark:text-slate-400">60%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-cyan-500 h-full rounded-full" style="width: 60%"></div>
+                <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 60%"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Category 2: Frontend -->
-        <div class="glass-card glass-card-interactive p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4">
+        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
+          <div class="flex items-center space-x-4 layer-z-30">
             <div
               class="w-12 h-12 rounded-2xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-xl">
               <i class="fas fa-laptop-code"></i>
             </div>
             <h3 class="text-xl font-bold">Frontend</h3>
           </div>
-          <div class="space-y-4 pt-2">
+          <div class="space-y-4 pt-2 layer-z-20">
             <!-- Skill Item -->
             <div>
               <div class="flex justify-between text-sm font-medium mb-1">
@@ -369,7 +411,7 @@
                 <span class="text-slate-500 dark:text-slate-400">90%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-violet-500 h-full rounded-full" style="width: 90%"></div>
+                <div class="bg-violet-500 h-full rounded-full transition-all duration-1000" style="width: 90%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -379,7 +421,7 @@
                 <span class="text-slate-500 dark:text-slate-400">85%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-violet-500 h-full rounded-full" style="width: 85%"></div>
+                <div class="bg-violet-500 h-full rounded-full transition-all duration-1000" style="width: 85%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -389,22 +431,22 @@
                 <span class="text-slate-500 dark:text-slate-400">70%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-violet-500 h-full rounded-full" style="width: 70%"></div>
+                <div class="bg-violet-500 h-full rounded-full transition-all duration-1000" style="width: 70%"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Category 3: Backend & Database -->
-        <div class="glass-card glass-card-interactive p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4">
+        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
+          <div class="flex items-center space-x-4 layer-z-30">
             <div
               class="w-12 h-12 rounded-2xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-xl">
               <i class="fas fa-server"></i>
             </div>
             <h3 class="text-xl font-bold">Backend & DB</h3>
           </div>
-          <div class="space-y-4 pt-2">
+          <div class="space-y-4 pt-2 layer-z-20">
             <!-- Skill Item -->
             <div>
               <div class="flex justify-between text-sm font-medium mb-1">
@@ -412,7 +454,7 @@
                 <span class="text-slate-500 dark:text-slate-400">75%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-pink-500 h-full rounded-full" style="width: 75%"></div>
+                <div class="bg-pink-500 h-full rounded-full transition-all duration-1000" style="width: 75%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -422,7 +464,7 @@
                 <span class="text-slate-500 dark:text-slate-400">80%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-pink-500 h-full rounded-full" style="width: 80%"></div>
+                <div class="bg-pink-500 h-full rounded-full transition-all duration-1000" style="width: 80%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -432,22 +474,22 @@
                 <span class="text-slate-500 dark:text-slate-400">70%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-pink-500 h-full rounded-full" style="width: 70%"></div>
+                <div class="bg-pink-500 h-full rounded-full transition-all duration-1000" style="width: 70%"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Category 4: Tools & Devops -->
-        <div class="glass-card glass-card-interactive p-8 rounded-3xl space-y-6">
-          <div class="flex items-center space-x-4">
+        <div class="glass-card-3d glass-card-interactive tilt-card p-8 rounded-3xl space-y-6">
+          <div class="flex items-center space-x-4 layer-z-30">
             <div
               class="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-500 flex items-center justify-center text-xl">
               <i class="fas fa-tools"></i>
             </div>
             <h3 class="text-xl font-bold">Tools</h3>
           </div>
-          <div class="space-y-4 pt-2">
+          <div class="space-y-4 pt-2 layer-z-20">
             <!-- Skill Item -->
             <div>
               <div class="flex justify-between text-sm font-medium mb-1">
@@ -455,7 +497,7 @@
                 <span class="text-slate-500 dark:text-slate-400">90%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full" style="width: 90%"></div>
+                <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 90%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -465,7 +507,7 @@
                 <span class="text-slate-500 dark:text-slate-400">95%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full" style="width: 95%"></div>
+                <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 95%"></div>
               </div>
             </div>
             <!-- Skill Item -->
@@ -475,7 +517,7 @@
                 <span class="text-slate-500 dark:text-slate-400">55%</span>
               </div>
               <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full" style="width: 55%"></div>
+                <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 55%"></div>
               </div>
             </div>
           </div>
@@ -486,8 +528,8 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-24 relative bg-white/50 dark:bg-slate-900/30">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
+  <section id="projects" class="py-24 relative bg-white/40 dark:bg-slate-900/30 backdrop-blur-md perspective-container">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-16">
         <h2
           class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
@@ -497,38 +539,39 @@
       </div>
 
       <!-- Filters Navigation tabs -->
-      <div class="flex flex-wrap justify-center items-center gap-3 mb-12">
+      <div class="flex flex-wrap justify-center items-center gap-3 mb-12 preserve-3d">
         <button type="button" id="project-filter-all" data-filter="all"
-          class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium bg-cyan-500 text-white shadow-lg shadow-cyan-500/30 transition-all focus:outline-none">All
+          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-semibold bg-cyan-500 text-white shadow-lg shadow-cyan-500/30 transition-all focus:outline-none">All
           Work</button>
         <button type="button" id="project-filter-web" data-filter="web"
-          class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Web
+          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Web
           Apps</button>
         <button type="button" id="project-filter-mobile" data-filter="mobile"
-          class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Mobile
+          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Mobile
           Apps</button>
         <button type="button" id="project-filter-system" data-filter="system"
-          class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Systems/Console</button>
+          class="filter-btn btn-3d-secondary px-6 py-2.5 rounded-full text-sm font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all focus:outline-none">Systems/Console</button>
       </div>
 
-      <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Projects Grid (3D Depth, Preserved Layout & Interactive Tilt) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 preserve-3d">
 
         <!-- Project 1: Synergy Analytics Dashboard -->
         <div
-          class="project-card glass-card glass-card-interactive rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
           data-category="web">
-          <div class="relative overflow-hidden group aspect-video">
+          <div class="relative overflow-hidden group aspect-video bg-slate-900 layer-z-10">
             <img src="assets/project_web.png" alt="Synergy Analytics Dashboard Workspace Mockup"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy">
             <div
               class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
               <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2026</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
             <div>
-              <div class="flex items-center space-x-2 mb-3">
+              <div class="flex items-center space-x-2 mb-3 layer-z-30">
                 <span
                   class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider">React</span>
                 <span
@@ -540,13 +583,13 @@
                 visualizers, latency warnings, and database health meters.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6">
+            <div class="flex items-center space-x-4 pt-6 preserve-3d">
               <a href="https://github.com" id="project-btn-synergy-code" target="_blank" rel="noopener noreferrer"
-                class="flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+                class="btn-3d-secondary flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code
               </a>
               <a href="https://example.com" id="project-btn-synergy-demo" target="_blank" rel="noopener noreferrer"
-                class="flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
+                class="btn-3d-primary flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
                 <i class="fas fa-external-link-alt mr-1.5"></i> Live Demo
               </a>
             </div>
@@ -555,19 +598,20 @@
 
         <!-- Project 2: Nexa Connect -->
         <div
-          class="project-card glass-card glass-card-interactive rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
           data-category="mobile">
-          <div class="relative overflow-hidden group aspect-video">
+          <div class="relative overflow-hidden group aspect-video bg-slate-900 layer-z-10">
             <img src="assets/project_mobile.png" alt="Nexa Connect Mobile Application Screen Mockup"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy">
             <div
               class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
               <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2025</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
             <div>
-              <div class="flex items-center space-x-2 mb-3">
+              <div class="flex items-center space-x-2 mb-3 layer-z-30">
                 <span
                   class="px-2.5 py-0.5 rounded-full bg-orange-500/10 dark:bg-orange-400/5 text-orange-600 dark:text-orange-400 text-xs font-semibold uppercase tracking-wider">Flutter</span>
                 <span
@@ -579,14 +623,14 @@
                 progress graphs, and a social connection portal.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6">
+            <div class="flex items-center space-x-4 pt-6 preserve-3d">
               <a href="https://github.com" id="project-btn-nexa-code" target="_blank" rel="noopener noreferrer"
-                class="flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+                class="btn-3d-secondary flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code
               </a>
               <a href="https://example.com" id="project-btn-nexa-demo" target="_blank" rel="noopener noreferrer"
-                class="flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
-                <i class="fas fa-external-link-alt mr-1.5"></i> App Store
+                class="btn-3d-primary flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
+                <i class="fas fa-external-link-alt mr-1.5"></i> App Demo
               </a>
             </div>
           </div>
@@ -594,12 +638,12 @@
 
         <!-- Project 3: Hotel Billing System -->
         <div
-          class="project-card glass-card glass-card-interactive rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
           data-category="system">
           <div
-            class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-indigo-950 flex items-center justify-center p-6 text-center">
+            class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-indigo-950 flex items-center justify-center p-6 text-center layer-z-10">
             <div class="space-y-2">
-              <i class="fas fa-file-invoice text-4xl text-cyan-400"></i>
+              <i class="fas fa-file-invoice text-4xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
               <div class="text-xs font-mono text-cyan-500/80">cli_billing_system.py</div>
             </div>
             <div
@@ -607,9 +651,9 @@
               <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2026</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
             <div>
-              <div class="flex items-center space-x-2 mb-3">
+              <div class="flex items-center space-x-2 mb-3 layer-z-30">
                 <span
                   class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider">Python</span>
               </div>
@@ -619,9 +663,9 @@
                 lists, and outputs detailed invoice printouts.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6">
+            <div class="flex items-center space-x-4 pt-6 preserve-3d">
               <a href="https://github.com" id="project-btn-billing-code" target="_blank" rel="noopener noreferrer"
-                class="flex-grow text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+                class="btn-3d-secondary flex-grow text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Source Code
               </a>
             </div>
@@ -630,12 +674,12 @@
 
         <!-- Project 4: NSBM Route Finder -->
         <div
-          class="project-card glass-card glass-card-interactive rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
           data-category="web">
           <div
-            class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-emerald-950 flex items-center justify-center p-6 text-center">
+            class="relative overflow-hidden group aspect-video bg-gradient-to-tr from-slate-900 to-emerald-950 flex items-center justify-center p-6 text-center layer-z-10">
             <div class="space-y-2">
-              <i class="fas fa-map-marked-alt text-4xl text-emerald-400"></i>
+              <i class="fas fa-map-marked-alt text-4xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
               <div class="text-xs font-mono text-emerald-500/80">campus_map_navigator.js</div>
             </div>
             <div
@@ -643,9 +687,9 @@
               <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2025</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
             <div>
-              <div class="flex items-center space-x-2 mb-3">
+              <div class="flex items-center space-x-2 mb-3 layer-z-30">
                 <span
                   class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">JS
                   (ES6)</span>
@@ -659,9 +703,9 @@
                 lounges, and labs across the NSBM Green University.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6">
+            <div class="flex items-center space-x-4 pt-6 preserve-3d">
               <a href="https://github.com" id="project-btn-route-code" target="_blank" rel="noopener noreferrer"
-                class="flex-grow text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+                class="btn-3d-secondary flex-grow text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code Repository
               </a>
             </div>
@@ -670,19 +714,20 @@
 
         <!-- Project 5: CabFlow Rides -->
         <div
-          class="project-card glass-card glass-card-interactive rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
+          class="project-card glass-card-3d glass-card-interactive tilt-card rounded-3xl overflow-hidden flex flex-col h-full border border-slate-200/50 dark:border-slate-800/50"
           data-category="mobile">
-          <div class="relative overflow-hidden group aspect-video">
+          <div class="relative overflow-hidden group aspect-video bg-slate-900 layer-z-10">
             <img src="assets/project_taxi.png" alt="CabFlow Rides Mobile Application Mockup"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy">
             <div
               class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
               <span class="text-white text-sm font-medium"><i class="fas fa-calendar-alt mr-2"></i>2026</span>
             </div>
           </div>
-          <div class="p-6 flex flex-col justify-between flex-grow">
+          <div class="p-6 flex flex-col justify-between flex-grow layer-z-20">
             <div>
-              <div class="flex items-center space-x-2 mb-3">
+              <div class="flex items-center space-x-2 mb-3 layer-z-30">
                 <span
                   class="px-2.5 py-0.5 rounded-full bg-orange-500/10 dark:bg-orange-400/5 text-orange-600 dark:text-orange-400 text-xs font-semibold uppercase tracking-wider">Flutter</span>
                 <span
@@ -694,13 +739,13 @@
                 estimation, automated route matching, and secure Firebase-backed user authentication.
               </p>
             </div>
-            <div class="flex items-center space-x-4 pt-6">
+            <div class="flex items-center space-x-4 pt-6 preserve-3d">
               <a href="https://github.com" id="project-btn-cabflow-code" target="_blank" rel="noopener noreferrer"
-                class="flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
+                class="btn-3d-secondary flex-1 text-center py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all focus:outline-none">
                 <i class="fab fa-github mr-1.5 text-sm"></i> Code
               </a>
               <a href="https://example.com" id="project-btn-cabflow-demo" target="_blank" rel="noopener noreferrer"
-                class="flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
+                class="btn-3d-primary flex-1 text-center py-2.5 rounded-xl bg-cyan-500 text-white text-xs font-semibold hover:bg-cyan-600 transition-all focus:outline-none">
                 <i class="fas fa-external-link-alt mr-1.5"></i> App Store
               </a>
             </div>
@@ -712,8 +757,8 @@
   </section>
 
   <!-- Education & Experience Timeline Section -->
-  <section id="timeline" class="py-24 relative">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
+  <section id="timeline" class="py-24 relative perspective-container">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-16">
         <h2
           class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
@@ -723,7 +768,7 @@
 
       <!-- Timeline Container -->
       <div
-        class="relative border-l-2 border-slate-200 dark:border-slate-800 max-w-4xl mx-auto pl-8 sm:pl-10 space-y-12">
+        class="relative border-l-2 border-slate-200 dark:border-slate-800 max-w-4xl mx-auto pl-8 sm:pl-10 space-y-12 preserve-3d">
 
         <!-- Timeline Item 1 -->
         <div class="timeline-item relative">
@@ -732,15 +777,15 @@
             class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center">
           </div>
 
-          <div class="space-y-2">
+          <div class="glass-card-3d glass-card-interactive tilt-card p-6 sm:p-8 rounded-2xl space-y-2">
             <span
-              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase">
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase layer-z-20">
               2024 - Present
             </span>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">B.Sc. (Hons) in Software Engineering</h3>
-            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">NSBM Green University Town, Sri Lanka
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white layer-z-30">B.Sc. (Hons) in Software Engineering</h3>
+            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 layer-z-20">NSBM Green University Town, Sri Lanka
             </h4>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2">
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2 layer-z-10">
               Developing a rigorous understanding of computer science principles, databases, OOP, data structures, and
               architecture frameworks. Active student developer, achieving academic recognition with a GPA of 3.8/4.0.
             </p>
@@ -754,14 +799,14 @@
             class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center">
           </div>
 
-          <div class="space-y-2">
+          <div class="glass-card-3d glass-card-interactive tilt-card p-6 sm:p-8 rounded-2xl space-y-2">
             <span
-              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-violet-500/10 dark:bg-violet-400/5 text-violet-600 dark:text-violet-400 text-xs font-semibold uppercase">
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-violet-500/10 dark:bg-violet-400/5 text-violet-600 dark:text-violet-400 text-xs font-semibold uppercase layer-z-20">
               2023
             </span>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">G.C.E. Advanced Level Examinations</h3>
-            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Physical Science Stream</h4>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white layer-z-30">G.C.E. Advanced Level Examinations</h3>
+            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 layer-z-20">Physical Science Stream</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2 layer-z-10">
               Studied Physics, Chemistry, and Combined Mathematics. Cultivated logical problem solving, algorithmic
               reasoning, and scientific inquiry skills.
             </p>
@@ -775,14 +820,14 @@
             class="timeline-dot absolute -left-[41px] sm:-left-[45px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center">
           </div>
 
-          <div class="space-y-2">
+          <div class="glass-card-3d glass-card-interactive tilt-card p-6 sm:p-8 rounded-2xl space-y-2">
             <span
-              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-pink-500/10 dark:bg-pink-400/5 text-pink-600 dark:text-pink-400 text-xs font-semibold uppercase">
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-pink-500/10 dark:bg-pink-400/5 text-pink-600 dark:text-pink-400 text-xs font-semibold uppercase layer-z-20">
               2022 - Present
             </span>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Self-Taught Development & Courses</h3>
-            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Global Tech Academies</h4>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white layer-z-30">Self-Taught Development & Courses</h3>
+            <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 layer-z-20">Global Tech Academies</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-2xl pt-2 layer-z-10">
               Completed certifications in Responsive Web Design, JavaScript Algorithms, Python scripting, and Frontend
               Development libraries to supplement academic tasks.
             </p>
@@ -794,8 +839,8 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-24 relative bg-white/50 dark:bg-slate-900/30">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
+  <section id="contact" class="py-24 relative bg-white/40 dark:bg-slate-900/30 backdrop-blur-md perspective-container">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-16">
         <h2
           class="section-title text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white inline-block">
@@ -804,7 +849,7 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 preserve-3d">
         <!-- Contact Information Cards -->
         <div class="lg:col-span-5 space-y-6">
           <h3 class="text-2xl font-bold mb-4">Let's build something together!</h3>
@@ -813,29 +858,29 @@
             message. I usually respond within 24 hours.
           </p>
 
-          <div class="space-y-4">
-            <!-- Contact Detail Card -->
+          <div class="space-y-4 preserve-3d">
+            <!-- Contact Detail Card 1 -->
             <div
-              class="glass-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
+              class="glass-card-3d glass-card-interactive tilt-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
               <div
-                class="w-12 h-12 rounded-xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-lg flex-shrink-0">
+                class="w-12 h-12 rounded-xl bg-cyan-500/10 dark:bg-cyan-400/5 text-cyan-500 flex items-center justify-center text-lg flex-shrink-0 layer-z-30">
                 <i class="fas fa-envelope"></i>
               </div>
-              <div>
+              <div class="layer-z-20">
                 <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Email Me</span>
                 <a href="mailto:nethmirajanuda@gmail.com"
                   class="text-sm font-medium hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">nethmirajanuda@gmail.com</a>
               </div>
             </div>
 
-            <!-- Contact Detail Card -->
+            <!-- Contact Detail Card 2 -->
             <div
-              class="glass-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
+              class="glass-card-3d glass-card-interactive tilt-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
               <div
-                class="w-12 h-12 rounded-xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-lg flex-shrink-0">
+                class="w-12 h-12 rounded-xl bg-violet-500/10 dark:bg-violet-400/5 text-violet-500 flex items-center justify-center text-lg flex-shrink-0 layer-z-30">
                 <i class="fab fa-linkedin-in"></i>
               </div>
-              <div>
+              <div class="layer-z-20">
                 <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">LinkedIn
                   Profile</span>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
@@ -843,14 +888,14 @@
               </div>
             </div>
 
-            <!-- Contact Detail Card -->
+            <!-- Contact Detail Card 3 -->
             <div
-              class="glass-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
+              class="glass-card-3d glass-card-interactive tilt-card p-5 rounded-2xl flex items-center space-x-4 border border-slate-200/50 dark:border-slate-800/50">
               <div
-                class="w-12 h-12 rounded-xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
+                class="w-12 h-12 rounded-xl bg-pink-500/10 dark:bg-pink-400/5 text-pink-500 flex items-center justify-center text-lg flex-shrink-0 layer-z-30">
                 <i class="fab fa-github"></i>
               </div>
-              <div>
+              <div class="layer-z-20">
                 <span class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">GitHub Repo</span>
                 <a href="https://github.com" target="_blank" rel="noopener noreferrer"
                   class="text-sm font-medium hover:text-pink-500 dark:hover:text-pink-400 transition-colors">github.com/januda-placeholder</a>
@@ -859,52 +904,54 @@
           </div>
         </div>
 
-        <!-- Contact Form Card -->
+        <!-- Contact Form Card (3D Tilt & Glassmorphic Depth) -->
         <div class="lg:col-span-7">
-          <div class="glass-card p-8 sm:p-10 rounded-3xl border border-slate-200/50 dark:border-slate-800/50">
-            <form id="contact-form" class="space-y-6" novalidate>
+          <div class="glass-card-3d tilt-card p-8 sm:p-10 rounded-3xl border border-slate-200/50 dark:border-slate-800/50">
+            <form id="contact-form" class="space-y-6 preserve-3d" novalidate>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <!-- Name field -->
-                <div class="space-y-2">
+                <div class="space-y-2 layer-z-20">
                   <label for="form-name"
                     class="block text-sm font-medium text-slate-700 dark:text-slate-300">Name</label>
                   <input type="text" id="form-name" placeholder="John Doe"
-                    class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
+                    class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
                   <span class="error-message text-xs text-red-500 hidden mt-1"></span>
                 </div>
 
                 <!-- Email field -->
-                <div class="space-y-2">
+                <div class="space-y-2 layer-z-20">
                   <label for="form-email" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Email
                     Address</label>
                   <input type="email" id="form-email" placeholder="john@example.com"
-                    class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
+                    class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
                   <span class="error-message text-xs text-red-500 hidden mt-1"></span>
                 </div>
               </div>
 
               <!-- Subject field -->
-              <div class="space-y-2">
+              <div class="space-y-2 layer-z-20">
                 <label for="form-subject"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-300">Subject</label>
                 <input type="text" id="form-subject" placeholder="Project Inquiry / Job Opportunity"
-                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
+                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm">
                 <span class="error-message text-xs text-red-500 hidden mt-1"></span>
               </div>
 
               <!-- Message field -->
-              <div class="space-y-2">
+              <div class="space-y-2 layer-z-20">
                 <label for="form-message"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-300">Message</label>
                 <textarea id="form-message" rows="5" placeholder="Hi Januda, I'd like to talk about..."
-                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm resize-none"></textarea>
+                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all text-sm resize-none"></textarea>
                 <span class="error-message text-xs text-red-500 hidden mt-1"></span>
               </div>
 
-              <!-- Submit Button -->
+              <!-- 3D Submit Button -->
               <button type="submit" id="form-submit-btn"
-                class="w-full py-4 px-6 rounded-xl bg-cyan-500 text-white font-semibold hover:bg-cyan-600 hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-center focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
-                Send Message <i class="fas fa-paper-plane ml-2 text-xs"></i>
+                class="btn-3d-primary w-full py-4 px-6 rounded-xl bg-cyan-500 text-white font-semibold hover:bg-cyan-600 transition-all text-center focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
+                <span class="inline-flex items-center justify-center layer-z-20">
+                  Send Message <i class="fas fa-paper-plane ml-2 text-xs"></i>
+                </span>
               </button>
             </form>
           </div>
@@ -914,7 +961,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 relative z-10">
     <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="text-center md:text-left">
         <a href="#home" id="footer-logo"
@@ -927,11 +974,11 @@
       <!-- Socials -->
       <div class="flex items-center space-x-6">
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Account"
-          class="hover:text-white transition-colors text-lg"><i class="fab fa-github"></i></a>
+          class="hover:text-cyan-400 hover:scale-110 transition-all text-lg"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
-          class="hover:text-white transition-colors text-lg"><i class="fab fa-linkedin-in"></i></a>
+          class="hover:text-cyan-400 hover:scale-110 transition-all text-lg"><i class="fab fa-linkedin-in"></i></a>
         <a href="mailto:januda@placeholder.com" aria-label="Email Me"
-          class="hover:text-white transition-colors text-lg"><i class="fas fa-envelope"></i></a>
+          class="hover:text-cyan-400 hover:scale-110 transition-all text-lg"><i class="fas fa-envelope"></i></a>
       </div>
 
       <div class="text-xs text-slate-500 text-center md:text-right">
@@ -943,7 +990,7 @@
 
   <!-- Back To Top Button -->
   <button id="back-to-top" type="button" aria-label="Scroll Back to Top"
-    class="fixed bottom-6 right-6 p-3 rounded-full bg-cyan-500 text-white shadow-lg opacity-0 pointer-events-none translate-y-10 hover:bg-cyan-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 z-50">
+    class="btn-3d-primary fixed bottom-6 right-6 p-3.5 rounded-full bg-cyan-500 text-white shadow-lg opacity-0 pointer-events-none translate-y-10 hover:bg-cyan-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 z-50">
     <i class="fas fa-chevron-up"></i>
   </button>
 
