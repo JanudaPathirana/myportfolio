@@ -60,6 +60,16 @@
   <!-- Three.js CDN for Interactive 3D Background -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+  <!-- GSAP 3 + ScrollTrigger (Scroll-driven animations) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+  <!-- SplitType (Text splitting for reveal animations) -->
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
   <!-- Google Fonts & FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -71,6 +81,20 @@
 </head>
 
 <body class="antialiased overflow-x-hidden relative">
+
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-text">
+        <span class="preloader-letter">J</span><span class="preloader-letter">A</span><span class="preloader-letter">N</span><span class="preloader-letter">U</span><span class="preloader-letter">D</span><span class="preloader-letter">A</span><span class="preloader-letter preloader-dot">.</span><span class="preloader-letter preloader-dev">D</span><span class="preloader-letter preloader-dev">E</span><span class="preloader-letter preloader-dev">V</span>
+      </div>
+      <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor (desktop only) -->
+  <div id="cursor-dot" class="custom-cursor cursor-dot"></div>
+  <div id="cursor-ring" class="custom-cursor cursor-ring"></div>
 
   <!-- Scroll Progress Bar -->
   <div id="scroll-progress"></div>
@@ -495,6 +519,64 @@
       </div>
     </div>
   </section>
+
+  <!-- Tech Stack Marquee Ticker -->
+  <div class="marquee-section py-8 overflow-hidden border-y border-slate-200/60 dark:border-slate-800/60 bg-slate-50/30 dark:bg-slate-900/30">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span class="marquee-item"><i class="fab fa-python"></i> Python</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-java"></i> Java</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-html5"></i> HTML5</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-wind"></i> Tailwind</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-git-alt"></i> Git</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-github"></i> GitHub</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-database"></i> MySQL</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-terminal"></i> VS Code</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-cube"></i> Three.js</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-code"></i> OOP</span>
+        <span class="marquee-separator">✦</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span class="marquee-item"><i class="fab fa-python"></i> Python</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-java"></i> Java</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-html5"></i> HTML5</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-wind"></i> Tailwind</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-git-alt"></i> Git</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fab fa-github"></i> GitHub</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-database"></i> MySQL</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-terminal"></i> VS Code</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-cube"></i> Three.js</span>
+        <span class="marquee-separator">✦</span>
+        <span class="marquee-item"><i class="fas fa-code"></i> OOP</span>
+        <span class="marquee-separator">✦</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Featured Projects Section -->
   <section id="projects" class="py-24 relative">
